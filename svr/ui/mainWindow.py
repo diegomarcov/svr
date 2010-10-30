@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
 # Created by: PyQt4 UI code generator 4.7.3
-#
+# estoy comitiando :D
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
