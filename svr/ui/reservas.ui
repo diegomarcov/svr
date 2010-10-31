@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Reservas para el vuelo PUTOELQUEVUELO</string>
+      <string>Reservas para el vuelo</string>
      </property>
     </widget>
    </item>
