@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ActualizarVuelo</class>
- <widget class="QDialog" name="ActualizarVuelo">
-  <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
-  </property>
+ <class>ActualizarSalidas</class>
+ <widget class="QDialog" name="ActualizarSalidas">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -32,15 +29,12 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Actualizar Vuelos</string>
-  </property>
-  <property name="modal">
-   <bool>true</bool>
+   <string>Actualizar Salidas</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-10</x>
      <y>110</y>
      <width>341</width>
      <height>32</height>
@@ -56,10 +50,10 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
+     <x>9</x>
+     <y>29</y>
      <width>482</width>
-     <height>94</height>
+     <height>68</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -69,37 +63,73 @@
     <enum>QFrame::Raised</enum>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="4" colspan="2">
-     <widget class="QComboBox" name="comboBoxDestino"/>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_5">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>Nombre</string>
+       <string>Dia y Hora de Llegada</string>
       </property>
      </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Origen</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="4" colspan="2">
-     <widget class="QLineEdit" name="lineEditNombreVuelo"/>
-    </item>
-    <item row="2" column="4" colspan="2">
-     <widget class="QComboBox" name="comboBoxOrigen"/>
     </item>
     <item row="0" column="0">
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>Destino</string>
+       <string>Dia y Hora de Salida</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QDateTimeEdit" name="dateTimeEditHoraSalida">
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDateTimeEdit" name="dateTimeEditHoraLlegada">
+      <property name="calendarPopup">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>10</y>
+     <width>235</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vuelo ID</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelIDVuelo">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>10</y>
+     <width>241</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>ID DEL VUELOOORR</string>
+   </property>
   </widget>
  </widget>
  <resources/>
@@ -107,7 +137,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>ActualizarVuelo</receiver>
+   <receiver>ActualizarSalidas</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -123,7 +153,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>ActualizarVuelo</receiver>
+   <receiver>ActualizarSalidas</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

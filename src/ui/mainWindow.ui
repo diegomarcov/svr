@@ -41,7 +41,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <layout class="QGridLayout" name="gridLayout">
@@ -75,21 +75,21 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QPushButton" name="btnAgregar">
+            <widget class="QPushButton" name="btnAgregarInstVuelos">
              <property name="text">
               <string>Agregar</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btnModificar">
+            <widget class="QPushButton" name="btnModificarInstVuelos">
              <property name="text">
               <string>Modificar</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btnEliminar">
+            <widget class="QPushButton" name="btnEliminarInstVuelos">
              <property name="text">
               <string>Eliminar</string>
              </property>
@@ -115,21 +115,21 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="btnAgregarVuelo">
              <property name="text">
               <string>Agregar</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="btnModificarVuelo">
              <property name="text">
               <string>Modificar</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="btnEliminarVuelo">
              <property name="text">
               <string>Eliminar</string>
              </property>
