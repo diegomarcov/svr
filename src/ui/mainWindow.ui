@@ -75,21 +75,21 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QPushButton" name="btnAgregar">
              <property name="text">
               <string>Agregar</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_5">
+            <widget class="QPushButton" name="btnModificar">
              <property name="text">
               <string>Modificar</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_6">
+            <widget class="QPushButton" name="btnEliminar">
              <property name="text">
               <string>Eliminar</string>
              </property>
