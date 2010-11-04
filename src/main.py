@@ -12,6 +12,7 @@ class Principal (QtGui.QMainWindow):
         self.connect(self.ventana.btnVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
         self.connect(self.ventana.btnInstanciasVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabInstVuelos)
         
+        
     def mostrarTabVuelos(self):
         self.ventana.stackedWidget.setCurrentIndex(1)
     
