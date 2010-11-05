@@ -11,8 +11,6 @@ USE svr;
 CREATE TABLE aeropuertos (
 	codigo    VARCHAR(3) NOT NULL,
 	nombre    VARCHAR(45) NOT NULL,
-	telefono  VARCHAR(30),
-	direccion VARCHAR(30),
 	pais      VARCHAR(45) NOT NULL,
 	ciudad    VARCHAR(45) NOT NULL,
 	PRIMARY KEY (codigo)
@@ -57,6 +55,6 @@ CREATE TABLE reservas (
 # DEFINICION DE USUARIOS
 GRANT ALL PRIVILEGES ON svr.* TO admin@localhost IDENTIFIED BY 'admin' WITH GRANT OPTION;
 
-CREATE USER 'empleado' IDENTIFIED BY 'empleado';
+CREATE USER 'empleado'@localhost IDENTIFIED BY 'empleado';
 GRANT SELECT ON svr.*          TO 'empleado';
 GRANT INSERT ON svr.*          TO 'empleado';

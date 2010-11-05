@@ -1,22 +1,28 @@
 import sys
+
+from connection.connection import Connection
+
 from PyQt4 import QtCore, QtGui
 from ui.mainWindow import Ui_MainWindow
-from dialogAMInstanciasVuelo import actualizarSalidasDialog
-from dialogAMVuelos import actualizarVuelosDialog
+from ActualizarSalidasDialog import ActualizarSalidasDialog
+from ActualizarVuelosDialog import ActualizarVuelosDialog
 
 class Principal (QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         
+        self.conn = Connection("svr")
+        self.conn.open()
+        print "-------------------------- Conexion OK! --------------------------\n"
         #creacion de la ventana principal
         self.ventana = Ui_MainWindow()
         self.ventana.setupUi(self)
         
         #creacion de la ventana para actualizacion de los vuelos
-        self.ventanaActualizacionVuelos = actualizarVuelosDialog()
+        self.ventanaActualizacionVuelos = ActualizarVuelosDialog(parent = self, conn = self.conn)
         
         #creacion del dialog ventana para la actualizacion de las salidas
-        self.ventanaActualizacionSalida = actualizarSalidasDialog()
+        self.ventanaActualizacionSalida = ActualizarSalidasDialog()
        
        #signals de los botones de la interface del sistema
         self.connect(self.ventana.btnVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
@@ -46,4 +52,3 @@ def main ():
         
 if __name__ == '__main__':
     main()
-    

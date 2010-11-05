@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'actualizacionVuelos.ui'
 #
-# Created: Fri Nov 05 04:56:32 2010
+# Created: Fri Nov 05 06:15:09 2010
 #      by: PyQt4 UI code generator 4.7.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,9 +36,9 @@ class Ui_ActualizarVuelo(object):
         self.frame.setObjectName(_fromUtf8("frame"))
         self.gridLayout_2 = QtGui.QGridLayout(self.frame)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
-        self.comboBoxDestino = QtGui.QComboBox(self.frame)
-        self.comboBoxDestino.setObjectName(_fromUtf8("comboBoxDestino"))
-        self.gridLayout_2.addWidget(self.comboBoxDestino, 0, 4, 1, 2)
+        self.comboBoxOrigen = QtGui.QComboBox(self.frame)
+        self.comboBoxOrigen.setObjectName(_fromUtf8("comboBoxOrigen"))
+        self.gridLayout_2.addWidget(self.comboBoxOrigen, 0, 4, 1, 2)
         self.label_5 = QtGui.QLabel(self.frame)
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.gridLayout_2.addWidget(self.label_5, 5, 0, 1, 1)
@@ -48,9 +48,9 @@ class Ui_ActualizarVuelo(object):
         self.lineEditNombreVuelo = QtGui.QLineEdit(self.frame)
         self.lineEditNombreVuelo.setObjectName(_fromUtf8("lineEditNombreVuelo"))
         self.gridLayout_2.addWidget(self.lineEditNombreVuelo, 5, 4, 1, 2)
-        self.comboBoxOrigen = QtGui.QComboBox(self.frame)
-        self.comboBoxOrigen.setObjectName(_fromUtf8("comboBoxOrigen"))
-        self.gridLayout_2.addWidget(self.comboBoxOrigen, 2, 4, 1, 2)
+        self.comboBoxDestino = QtGui.QComboBox(self.frame)
+        self.comboBoxDestino.setObjectName(_fromUtf8("comboBoxDestino"))
+        self.gridLayout_2.addWidget(self.comboBoxDestino, 2, 4, 1, 2)
         self.label_2 = QtGui.QLabel(self.frame)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.gridLayout_2.addWidget(self.label_2, 0, 0, 1, 1)
@@ -73,6 +73,6 @@ class Ui_ActualizarVuelo(object):
     def retranslateUi(self, ActualizarVuelo):
         ActualizarVuelo.setWindowTitle(QtGui.QApplication.translate("ActualizarVuelo", "Actualizar Vuelos", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("ActualizarVuelo", "Nombre", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("ActualizarVuelo", "Origen", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("ActualizarVuelo", "Destino", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("ActualizarVuelo", "Destino", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(QtGui.QApplication.translate("ActualizarVuelo", "Origen", None, QtGui.QApplication.UnicodeUTF8))
 

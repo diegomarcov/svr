@@ -51,7 +51,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="4" colspan="2">
-       <widget class="QComboBox" name="comboBoxDestino"/>
+       <widget class="QComboBox" name="comboBoxOrigen"/>
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="label_5">
@@ -63,7 +63,7 @@
       <item row="2" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Origen</string>
+         <string>Destino</string>
         </property>
        </widget>
       </item>
@@ -71,12 +71,12 @@
        <widget class="QLineEdit" name="lineEditNombreVuelo"/>
       </item>
       <item row="2" column="4" colspan="2">
-       <widget class="QComboBox" name="comboBoxOrigen"/>
+       <widget class="QComboBox" name="comboBoxDestino"/>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Destino</string>
+         <string>Origen</string>
         </property>
        </widget>
       </item>
