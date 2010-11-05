@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Fri Nov 05 04:39:00 2010
-#      by: PyQt4 UI code generator 4.7.6
+# Created: Fri Nov 05 19:07:41 2010
+#      by: PyQt4 UI code generator 4.8
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -39,14 +39,18 @@ class Ui_MainWindow(object):
         self.page.setObjectName(_fromUtf8("page"))
         self.gridLayout = QtGui.QGridLayout(self.page)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.tablaVuelos = QtGui.QTableView(self.page)
-        self.tablaVuelos.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.tablaVuelos.setObjectName(_fromUtf8("tablaVuelos"))
-        self.gridLayout.addWidget(self.tablaVuelos, 0, 1, 1, 2)
         self.calendarioVuelos = QtGui.QCalendarWidget(self.page)
         self.calendarioVuelos.setMaximumSize(QtCore.QSize(250, 200))
         self.calendarioVuelos.setObjectName(_fromUtf8("calendarioVuelos"))
         self.gridLayout.addWidget(self.calendarioVuelos, 0, 0, 1, 1)
+        self.tablaSalidas = QtGui.QTableView(self.page)
+        self.tablaSalidas.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.tablaSalidas.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
+        self.tablaSalidas.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
+        self.tablaSalidas.setCornerButtonEnabled(False)
+        self.tablaSalidas.setObjectName(_fromUtf8("tablaSalidas"))
+        self.tablaSalidas.verticalHeader().setVisible(False)
+        self.gridLayout.addWidget(self.tablaSalidas, 0, 1, 1, 2)
         self.frame = QtGui.QFrame(self.page)
         self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtGui.QFrame.Raised)
@@ -68,9 +72,16 @@ class Ui_MainWindow(object):
         self.page_2.setObjectName(_fromUtf8("page_2"))
         self.gridLayout_2 = QtGui.QGridLayout(self.page_2)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
-        self.tableView = QtGui.QTableView(self.page_2)
-        self.tableView.setObjectName(_fromUtf8("tableView"))
-        self.gridLayout_2.addWidget(self.tableView, 0, 0, 1, 3)
+        self.tablaVuelos = QtGui.QTableView(self.page_2)
+        self.tablaVuelos.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
+        self.tablaVuelos.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
+        self.tablaVuelos.setCornerButtonEnabled(False)
+        self.tablaVuelos.setObjectName(_fromUtf8("tablaVuelos"))
+        self.tablaVuelos.horizontalHeader().setCascadingSectionResizes(True)
+        self.tablaVuelos.horizontalHeader().setDefaultSectionSize(150)
+        self.tablaVuelos.horizontalHeader().setStretchLastSection(True)
+        self.tablaVuelos.verticalHeader().setVisible(False)
+        self.gridLayout_2.addWidget(self.tablaVuelos, 0, 0, 1, 3)
         self.frame_2 = QtGui.QFrame(self.page_2)
         self.frame_2.setFrameShape(QtGui.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtGui.QFrame.Raised)
@@ -109,7 +120,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuMen.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

@@ -6,6 +6,8 @@ from PyQt4 import QtCore, QtGui
 from ui.mainWindow import Ui_MainWindow
 from ActualizarSalidasDialog import ActualizarSalidasDialog
 from ActualizarVuelosDialog import ActualizarVuelosDialog
+from models.vuelos import Vuelos
+from models.salidas import Salidas
 
 class Principal (QtGui.QMainWindow):
     def __init__(self):
@@ -18,6 +20,16 @@ class Principal (QtGui.QMainWindow):
         self.ventana = Ui_MainWindow()
         self.ventana.setupUi(self)
         
+        #cargar vuelos en la tabla principal
+        todosLosVuelos = Vuelos(self.conn)
+        todosLosVuelos.loadAll()
+        self.ventana.tablaVuelos.setModel(todosLosVuelos.model)
+        
+        #cargar salidas en la tabla principal
+        todasLasSalidas = Salidas(self.conn)
+        todasLasSalidas.loadAll()
+        self.ventana.tablaSalidas.setModel(todasLasSalidas.model)
+        
         #creacion de la ventana para actualizacion de los vuelos
         self.ventanaActualizacionVuelos = ActualizarVuelosDialog(parent = self, conn = self.conn)
         
@@ -27,10 +39,9 @@ class Principal (QtGui.QMainWindow):
        #signals de los botones de la interface del sistema
         self.connect(self.ventana.btnVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
         self.connect(self.ventana.btnInstanciasVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabInstVuelos)
+        self.connect(self.ventana.btnAgregarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnModificarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnModificarVuelo, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
-        # self.connect(self.ventana.btnEliminarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
-        self.connect(self.ventana.btnAgregarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnAgregarVuelo, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
         
     def mostrarTabVuelos(self):
