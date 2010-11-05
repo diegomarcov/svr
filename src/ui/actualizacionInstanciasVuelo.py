@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'actualizacionInstanciasVuelo.ui'
 #
-# Created: Thu Nov 04 21:27:15 2010
-#      by: PyQt4 UI code generator 4.8
+# Created: Fri Nov 05 05:07:13 2010
+#      by: PyQt4 UI code generator 4.7.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_ActualizarSalidas(object):
     def setupUi(self, ActualizarSalidas):
         ActualizarSalidas.setObjectName(_fromUtf8("ActualizarSalidas"))
-        ActualizarSalidas.setWindowModality(QtCore.Qt.WindowModal)
+        ActualizarSalidas.setWindowModality(QtCore.Qt.NonModal)
         ActualizarSalidas.resize(500, 150)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -27,7 +27,7 @@ class Ui_ActualizarSalidas(object):
         ActualizarSalidas.setMinimumSize(QtCore.QSize(500, 150))
         ActualizarSalidas.setMaximumSize(QtCore.QSize(500, 150))
         ActualizarSalidas.setSizeGripEnabled(False)
-        ActualizarSalidas.setModal(True)
+        ActualizarSalidas.setModal(False)
         self.gridLayout = QtGui.QGridLayout(ActualizarSalidas)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.labelIDVuelo = QtGui.QLabel(ActualizarSalidas)
@@ -52,7 +52,7 @@ class Ui_ActualizarSalidas(object):
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.gridLayout_2.addWidget(self.label_2, 0, 0, 1, 1)
         self.dateTimeEditHoraSalida = QtGui.QDateTimeEdit(self.frame)
-        self.dateTimeEditHoraSalida.setCalendarPopup(True)
+        self.dateTimeEditHoraSalida.setCalendarPopup(False)
         self.dateTimeEditHoraSalida.setObjectName(_fromUtf8("dateTimeEditHoraSalida"))
         self.gridLayout_2.addWidget(self.dateTimeEditHoraSalida, 0, 1, 1, 1)
         self.dateTimeEditHoraLlegada = QtGui.QDateTimeEdit(self.frame)

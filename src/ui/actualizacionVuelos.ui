@@ -3,7 +3,7 @@
  <class>ActualizarVuelo</class>
  <widget class="QDialog" name="ActualizarVuelo">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="enabled">
    <bool>true</bool>
@@ -38,7 +38,7 @@
    <string>Actualizar Vuelos</string>
   </property>
   <property name="modal">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="3">

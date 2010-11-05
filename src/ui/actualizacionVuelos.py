@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'actualizacionVuelos.ui'
 #
-# Created: Thu Nov 04 21:27:13 2010
-#      by: PyQt4 UI code generator 4.8
+# Created: Fri Nov 05 04:56:32 2010
+#      by: PyQt4 UI code generator 4.7.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_ActualizarVuelo(object):
     def setupUi(self, ActualizarVuelo):
         ActualizarVuelo.setObjectName(_fromUtf8("ActualizarVuelo"))
-        ActualizarVuelo.setWindowModality(QtCore.Qt.WindowModal)
+        ActualizarVuelo.setWindowModality(QtCore.Qt.NonModal)
         ActualizarVuelo.setEnabled(True)
         ActualizarVuelo.resize(500, 150)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
@@ -27,7 +27,7 @@ class Ui_ActualizarVuelo(object):
         ActualizarVuelo.setSizePolicy(sizePolicy)
         ActualizarVuelo.setMinimumSize(QtCore.QSize(500, 150))
         ActualizarVuelo.setMaximumSize(QtCore.QSize(500, 150))
-        ActualizarVuelo.setModal(True)
+        ActualizarVuelo.setModal(False)
         self.gridLayout = QtGui.QGridLayout(ActualizarVuelo)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.frame = QtGui.QFrame(ActualizarVuelo)

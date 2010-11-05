@@ -3,7 +3,7 @@
  <class>ActualizarSalidas</class>
  <widget class="QDialog" name="ActualizarSalidas">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -38,7 +38,7 @@
    <bool>false</bool>
   </property>
   <property name="modal">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="2" colspan="2">
@@ -85,15 +85,36 @@
       </item>
       <item row="0" column="1">
        <widget class="QDateTimeEdit" name="dateTimeEditHoraSalida">
+        <property name="minimumDate">
+         <date>
+          <year>2010</year>
+          <month>11</month>
+          <day>1</day>
+         </date>
+        </property>
+        <property name="minimumTime">
+         <time>
+          <hour>0</hour>
+          <minute>0</minute>
+          <second>0</second>
+         </time>
+        </property>
         <property name="calendarPopup">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
        <widget class="QDateTimeEdit" name="dateTimeEditHoraLlegada">
+        <property name="minimumDate">
+         <date>
+          <year>2010</year>
+          <month>11</month>
+          <day>1</day>
+         </date>
+        </property>
         <property name="calendarPopup">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </item>
