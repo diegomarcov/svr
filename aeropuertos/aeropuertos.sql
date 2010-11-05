@@ -1,3 +1,4 @@
+USE svr;
 insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("TXL", "Tegel", "Alemania", "Berlín");
 insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("THF", "Tempelhof", "Alemania", "Berlín");
 insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("SXF", "Schonefeld", "Alemania", "Berlín");
@@ -217,7 +218,7 @@ insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("OAK", "Metropoli
 insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("SEA", "Seattle-Tacoma Int.", "USA", "Seattle");
 insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("IAD", "Dulles Int.", "USA", "Washington");
 insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("DCA", "Reagan Int.", "USA", "Washington");
-insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("BWI", "Baltimore/Washington Int.", "USA", "Washington");
+insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("BTW", "Baltimore/Washington Int.", "USA", "Washington");
 insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("CCS", "Simón Bolívar", "Venezuela", "Caracas");
 insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("MAR", "La Chinita", "Venezuela", "Maracaibo");
 insert into Aeropuertos (Codigo, Nombre, Pais, Ciudad) values ("PMV", "Del Caribe", "Venezuela", "Porlamar");
