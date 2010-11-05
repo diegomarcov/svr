@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'actualizacionInstanciasVuelo.ui'
 #
-# Created: Fri Nov 05 05:07:13 2010
-#      by: PyQt4 UI code generator 4.7.6
+# Created: Fri Nov 05 14:53:40 2010
+#      by: PyQt4 UI code generator 4.8
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -52,10 +52,13 @@ class Ui_ActualizarSalidas(object):
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.gridLayout_2.addWidget(self.label_2, 0, 0, 1, 1)
         self.dateTimeEditHoraSalida = QtGui.QDateTimeEdit(self.frame)
-        self.dateTimeEditHoraSalida.setCalendarPopup(False)
+        self.dateTimeEditHoraSalida.setMinimumDate(QtCore.QDate(2010, 11, 1))
+        self.dateTimeEditHoraSalida.setMinimumTime(QtCore.QTime(0, 0, 0))
+        self.dateTimeEditHoraSalida.setCalendarPopup(True)
         self.dateTimeEditHoraSalida.setObjectName(_fromUtf8("dateTimeEditHoraSalida"))
         self.gridLayout_2.addWidget(self.dateTimeEditHoraSalida, 0, 1, 1, 1)
         self.dateTimeEditHoraLlegada = QtGui.QDateTimeEdit(self.frame)
+        self.dateTimeEditHoraLlegada.setMinimumDate(QtCore.QDate(2010, 11, 1))
         self.dateTimeEditHoraLlegada.setCalendarPopup(True)
         self.dateTimeEditHoraLlegada.setObjectName(_fromUtf8("dateTimeEditHoraLlegada"))
         self.gridLayout_2.addWidget(self.dateTimeEditHoraLlegada, 1, 1, 1, 1)

@@ -28,6 +28,7 @@ class Principal (QtGui.QMainWindow):
         self.connect(self.ventana.btnVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
         self.connect(self.ventana.btnInstanciasVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabInstVuelos)
         self.connect(self.ventana.btnModificarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
+        self.connect(self.ventana.btnModificarVuelo, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
         # self.connect(self.ventana.btnEliminarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnAgregarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnAgregarVuelo, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
@@ -44,7 +45,7 @@ class Principal (QtGui.QMainWindow):
     def mostrarActualizacionVuelos(self):
         self.ventanaActualizacionVuelos.exec_()
             
-def main ():
+def main():
         app = QtGui.QApplication (sys.argv)
         ventana = Principal()
         ventana.show()

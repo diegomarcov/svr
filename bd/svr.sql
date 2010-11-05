@@ -53,8 +53,9 @@ CREATE TABLE reservas (
 ) ENGINE=InnoDB;
 
 # DEFINICION DE USUARIOS
-GRANT ALL PRIVILEGES ON svr.* TO admin@localhost IDENTIFIED BY 'admin' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON svr.* TO 'admin'@'localhost' IDENTIFIED BY 'admin' WITH GRANT OPTION;
 
-CREATE USER 'empleado'@localhost IDENTIFIED BY 'empleado';
-GRANT SELECT ON svr.*          TO 'empleado';
-GRANT INSERT ON svr.*          TO 'empleado';
+CREATE USER 'empleado'@'localhost' IDENTIFIED BY 'empleado';
+
+GRANT SELECT ON svr.*          TO 'empleado'@'localhost';
+GRANT INSERT ON svr.*          TO 'empleado'@'localhost';

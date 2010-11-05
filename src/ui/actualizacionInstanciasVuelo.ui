@@ -100,7 +100,7 @@
          </time>
         </property>
         <property name="calendarPopup">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -114,7 +114,7 @@
          </date>
         </property>
         <property name="calendarPopup">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
        </widget>
       </item>
