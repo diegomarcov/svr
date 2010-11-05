@@ -7,14 +7,18 @@ from ui.actualizacionVuelos import Ui_ActualizarVuelo
 class Principal (QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
+        
         #creacion de la ventana principal
         self.ventana = Ui_MainWindow()
         self.ventana.setupUi(self)
+        
         #creacion de la ventana para actualizacion de los vuelos
         self.ventanaActualizacionVuelos = Ui_ActualizarVuelo()
+        
         #creacion de la ventana para la actualizacion de las salidas
         self.ventanaActualizacionSalida = Ui_ActualizarSalidas()
-        #signals de los botones de la interface del sistema
+       
+       #signals de los botones de la interface del sistema
         self.connect(self.ventana.btnVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
         self.connect(self.ventana.btnInstanciasVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabInstVuelos)
         self.connect(self.ventana.btnModificarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
@@ -28,7 +32,8 @@ class Principal (QtGui.QMainWindow):
         self.ventana.stackedWidget.setCurrentIndex(0)
 
     def mostrarActualizacionInstanciasVuelos(self):
-        self.ventanaActualizacionVuelos._exec()
+        #el problema esta en q la ventana no hereda de QtGui.QtDialog sino q hereda de object FFFUUU!
+        self.ventanaActualizacionVuelos.exec_()
             
 def main ():
         app = QtGui.QApplication (sys.argv)

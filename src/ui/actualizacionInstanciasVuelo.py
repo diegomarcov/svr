@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'actualizacionInstanciasVuelo.ui'
 #
-# Created: Thu Nov 04 17:38:52 2010
+# Created: Thu Nov 04 21:27:15 2010
 #      by: PyQt4 UI code generator 4.8
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,6 +17,7 @@ except AttributeError:
 class Ui_ActualizarSalidas(object):
     def setupUi(self, ActualizarSalidas):
         ActualizarSalidas.setObjectName(_fromUtf8("ActualizarSalidas"))
+        ActualizarSalidas.setWindowModality(QtCore.Qt.WindowModal)
         ActualizarSalidas.resize(500, 150)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -25,13 +26,20 @@ class Ui_ActualizarSalidas(object):
         ActualizarSalidas.setSizePolicy(sizePolicy)
         ActualizarSalidas.setMinimumSize(QtCore.QSize(500, 150))
         ActualizarSalidas.setMaximumSize(QtCore.QSize(500, 150))
-        self.buttonBox = QtGui.QDialogButtonBox(ActualizarSalidas)
-        self.buttonBox.setGeometry(QtCore.QRect(-10, 110, 341, 32))
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
+        ActualizarSalidas.setSizeGripEnabled(False)
+        ActualizarSalidas.setModal(True)
+        self.gridLayout = QtGui.QGridLayout(ActualizarSalidas)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
+        self.labelIDVuelo = QtGui.QLabel(ActualizarSalidas)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.labelIDVuelo.sizePolicy().hasHeightForWidth())
+        self.labelIDVuelo.setSizePolicy(sizePolicy)
+        self.labelIDVuelo.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.labelIDVuelo.setObjectName(_fromUtf8("labelIDVuelo"))
+        self.gridLayout.addWidget(self.labelIDVuelo, 0, 2, 1, 2)
         self.frame = QtGui.QFrame(ActualizarSalidas)
-        self.frame.setGeometry(QtCore.QRect(9, 29, 482, 68))
         self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtGui.QFrame.Raised)
         self.frame.setObjectName(_fromUtf8("frame"))
@@ -51,18 +59,19 @@ class Ui_ActualizarSalidas(object):
         self.dateTimeEditHoraLlegada.setCalendarPopup(True)
         self.dateTimeEditHoraLlegada.setObjectName(_fromUtf8("dateTimeEditHoraLlegada"))
         self.gridLayout_2.addWidget(self.dateTimeEditHoraLlegada, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.frame, 1, 0, 1, 4)
+        self.buttonBox = QtGui.QDialogButtonBox(ActualizarSalidas)
+        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
+        self.gridLayout.addWidget(self.buttonBox, 2, 1, 1, 2)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem, 2, 3, 1, 1)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem1, 2, 0, 1, 1)
         self.label = QtGui.QLabel(ActualizarSalidas)
-        self.label.setGeometry(QtCore.QRect(9, 10, 235, 13))
         self.label.setObjectName(_fromUtf8("label"))
-        self.labelIDVuelo = QtGui.QLabel(ActualizarSalidas)
-        self.labelIDVuelo.setGeometry(QtCore.QRect(250, 10, 241, 13))
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.labelIDVuelo.sizePolicy().hasHeightForWidth())
-        self.labelIDVuelo.setSizePolicy(sizePolicy)
-        self.labelIDVuelo.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.labelIDVuelo.setObjectName(_fromUtf8("labelIDVuelo"))
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 2)
 
         self.retranslateUi(ActualizarSalidas)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), ActualizarSalidas.accept)
@@ -71,8 +80,8 @@ class Ui_ActualizarSalidas(object):
 
     def retranslateUi(self, ActualizarSalidas):
         ActualizarSalidas.setWindowTitle(QtGui.QApplication.translate("ActualizarSalidas", "Actualizar Salidas", None, QtGui.QApplication.UnicodeUTF8))
+        self.labelIDVuelo.setText(QtGui.QApplication.translate("ActualizarSalidas", "ID DEL VUELOOORR", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("ActualizarSalidas", "Dia y Hora de Llegada", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("ActualizarSalidas", "Dia y Hora de Salida", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("ActualizarSalidas", "Vuelo ID", None, QtGui.QApplication.UnicodeUTF8))
-        self.labelIDVuelo.setText(QtGui.QApplication.translate("ActualizarSalidas", "ID DEL VUELOOORR", None, QtGui.QApplication.UnicodeUTF8))
 

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'actualizacionVuelos.ui'
 #
-# Created: Thu Nov 04 17:39:12 2010
+# Created: Thu Nov 04 21:27:13 2010
 #      by: PyQt4 UI code generator 4.8
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,6 +17,8 @@ except AttributeError:
 class Ui_ActualizarVuelo(object):
     def setupUi(self, ActualizarVuelo):
         ActualizarVuelo.setObjectName(_fromUtf8("ActualizarVuelo"))
+        ActualizarVuelo.setWindowModality(QtCore.Qt.WindowModal)
+        ActualizarVuelo.setEnabled(True)
         ActualizarVuelo.resize(500, 150)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -25,13 +27,10 @@ class Ui_ActualizarVuelo(object):
         ActualizarVuelo.setSizePolicy(sizePolicy)
         ActualizarVuelo.setMinimumSize(QtCore.QSize(500, 150))
         ActualizarVuelo.setMaximumSize(QtCore.QSize(500, 150))
-        self.buttonBox = QtGui.QDialogButtonBox(ActualizarVuelo)
-        self.buttonBox.setGeometry(QtCore.QRect(0, 110, 341, 32))
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
+        ActualizarVuelo.setModal(True)
+        self.gridLayout = QtGui.QGridLayout(ActualizarVuelo)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.frame = QtGui.QFrame(ActualizarVuelo)
-        self.frame.setGeometry(QtCore.QRect(10, 10, 482, 94))
         self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtGui.QFrame.Raised)
         self.frame.setObjectName(_fromUtf8("frame"))
@@ -55,6 +54,16 @@ class Ui_ActualizarVuelo(object):
         self.label_2 = QtGui.QLabel(self.frame)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.gridLayout_2.addWidget(self.label_2, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.frame, 0, 0, 1, 3)
+        self.buttonBox = QtGui.QDialogButtonBox(ActualizarVuelo)
+        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
+        self.gridLayout.addWidget(self.buttonBox, 1, 1, 1, 1)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem, 1, 2, 1, 1)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem1, 1, 0, 1, 1)
 
         self.retranslateUi(ActualizarVuelo)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), ActualizarVuelo.accept)
