@@ -9,7 +9,7 @@ class Aeropuertos(AbstractModel):
         self.tableName = "aeropuertos"
         self.id = "codigo"
 
-#	Metodos heredados:
+#   Metodos heredados:
 #    def getModel(self)
 #    def get(self, column)
 #    def load(self, id)

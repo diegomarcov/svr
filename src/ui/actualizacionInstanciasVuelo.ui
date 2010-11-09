@@ -88,7 +88,7 @@
         <property name="minimumDate">
          <date>
           <year>2010</year>
-          <month>11</month>
+          <month>1</month>
           <day>1</day>
          </date>
         </property>
@@ -98,6 +98,9 @@
           <minute>0</minute>
           <second>0</second>
          </time>
+        </property>
+        <property name="displayFormat">
+         <string>dd/MM/yyyy h:mm AP</string>
         </property>
         <property name="calendarPopup">
          <bool>false</bool>
@@ -112,6 +115,9 @@
           <month>11</month>
           <day>1</day>
          </date>
+        </property>
+        <property name="displayFormat">
+         <string>dd/MM/yyyy h:mm AP</string>
         </property>
         <property name="calendarPopup">
          <bool>false</bool>

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'actualizacionInstanciasVuelo.ui'
 #
-# Created: Fri Nov 05 19:25:31 2010
-#      by: PyQt4 UI code generator 4.8
+# Created: Mon Nov  8 19:57:56 2010
+#      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -52,7 +52,7 @@ class Ui_ActualizarSalidas(object):
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.gridLayout_2.addWidget(self.label_2, 0, 0, 1, 1)
         self.dateTimeEditHoraSalida = QtGui.QDateTimeEdit(self.frame)
-        self.dateTimeEditHoraSalida.setMinimumDate(QtCore.QDate(2010, 11, 1))
+        self.dateTimeEditHoraSalida.setMinimumDate(QtCore.QDate(2010, 1, 1))
         self.dateTimeEditHoraSalida.setMinimumTime(QtCore.QTime(0, 0, 0))
         self.dateTimeEditHoraSalida.setCalendarPopup(False)
         self.dateTimeEditHoraSalida.setObjectName(_fromUtf8("dateTimeEditHoraSalida"))
@@ -86,5 +86,7 @@ class Ui_ActualizarSalidas(object):
         self.labelIDVuelo.setText(QtGui.QApplication.translate("ActualizarSalidas", "ID DEL VUELOOORR", None, QtGui.QApplication.UnicodeUTF8))
         self.label_3.setText(QtGui.QApplication.translate("ActualizarSalidas", "Dia y Hora de Llegada", None, QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("ActualizarSalidas", "Dia y Hora de Salida", None, QtGui.QApplication.UnicodeUTF8))
+        self.dateTimeEditHoraSalida.setDisplayFormat(QtGui.QApplication.translate("ActualizarSalidas", "dd/MM/yyyy h:mm AP", None, QtGui.QApplication.UnicodeUTF8))
+        self.dateTimeEditHoraLlegada.setDisplayFormat(QtGui.QApplication.translate("ActualizarSalidas", "dd/MM/yyyy h:mm AP", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("ActualizarSalidas", "Vuelo ID", None, QtGui.QApplication.UnicodeUTF8))
 

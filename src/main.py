@@ -16,46 +16,67 @@ class Principal (QtGui.QMainWindow):
         self.conn = Connection("svr")
         self.conn.open()
         print "-------------------------- Conexion OK! --------------------------\n"
-        #creacion de la ventana principal
+        
+        # Creacion de la ventana principal
         self.ventana = Ui_MainWindow()
         self.ventana.setupUi(self)
         
-        #cargar vuelos en la tabla principal
-        todosLosVuelos = Vuelos(self.conn)
-        todosLosVuelos.loadAll()
-        self.ventana.tablaVuelos.setModel(todosLosVuelos.model)
+        # Cargar vuelos en la tabla principal
+        self.todosLosVuelos = Vuelos(self.conn)
+        self.todosLosVuelos.loadAll()
+        self.ventana.tablaVuelos.setModel(self.todosLosVuelos.model)
         
-        #cargar salidas en la tabla principal
-        todasLasSalidas = Salidas(self.conn)
-        todasLasSalidas.loadAll()
-        self.ventana.tablaSalidas.setModel(todasLasSalidas.model)
+        # Cargar salidas en la tabla principal
+        self.todasLasSalidas = Salidas(self.conn)
+        self.todasLasSalidas.loadAll()
+        self.ventana.tablaSalidas.setModel(self.todasLasSalidas.model)
         
-        #creacion de la ventana para actualizacion de los vuelos
+        # creacion de la ventana para actualizacion de los vuelos
         self.ventanaActualizacionVuelos = ActualizarVuelosDialog(parent = self, conn = self.conn)
         
-        #creacion del dialog ventana para la actualizacion de las salidas
+        # Creacion del dialog ventana para la actualizacion de las salidas
         self.ventanaActualizacionSalida = ActualizarSalidasDialog()
-       
-       #signals de los botones de la interface del sistema
-        self.connect(self.ventana.btnVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
-        self.connect(self.ventana.btnInstanciasVuelos, QtCore.SIGNAL('clicked()'), self.mostrarTabInstVuelos)
-        self.connect(self.ventana.btnAgregarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
+        
+        # Signals de los botones de la interface del sistema
+        self.connect(self.ventana.btnVuelos,              QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
+        self.connect(self.ventana.btnAgregarVuelo,        QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
+        self.connect(self.ventana.btnModificarVuelo,      QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
+        self.connect(self.ventana.btnEliminarVuelo,       QtCore.SIGNAL('clicked()'), self.eliminarVuelo)
+        
+        self.connect(self.ventana.btnInstanciasVuelos,    QtCore.SIGNAL('clicked()'), self.mostrarTabInstVuelos)
+        self.connect(self.ventana.btnAgregarInstVuelos,   QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnModificarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
-        self.connect(self.ventana.btnModificarVuelo, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
-        self.connect(self.ventana.btnAgregarVuelo, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
+        self.connect(self.ventana.btnEliminarInstVuelos,  QtCore.SIGNAL('clicked()'), self.eliminarInstanciaVuelo)
         
     def mostrarTabVuelos(self):
         self.ventana.stackedWidget.setCurrentIndex(1)
     
-    def mostrarTabInstVuelos(self):
-        self.ventana.stackedWidget.setCurrentIndex(0)
-
-    def mostrarActualizacionInstanciasVuelos(self):
-        self.ventanaActualizacionSalida.exec_()
-        
     def mostrarActualizacionVuelos(self):
         self.ventanaActualizacionVuelos.exec_()
-            
+    
+    def eliminarVuelo(self):
+        print "Eliminatoreando el vuelo!"
+    
+    def mostrarTabInstVuelos(self):
+        # Al mostrar devuelta el tab de las instancias de vuelos, volver a 
+        # cargar los datos en la tabla.
+        self.todasLasSalidas = Salidas(self.conn)
+        self.todasLasSalidas.loadAll()
+        self.ventana.tablaSalidas.setModel(todasLasSalidas.model)
+        self.ventana.stackedWidget.setCurrentIndex(0)
+    
+    def mostrarActualizacionInstanciasVuelos(self):
+        self.ventanaActualizacionSalida.exec_()
+    
+    def eliminarInstanciaVuelo(self):
+        # Obtener el id de la salida seleccionada
+        index = self.ventana.tablaSalidas.selectionModel().currentIndex().row()
+        vuelo_id = self.todasLasSalidas.getModel().record(index).value(0).toString()
+        diahora_sale = self.todasLasSalidas.getModel().record(index).value(1).toString()
+        print index, vuelo_id, diahora_sale
+        self.todasLasSalidas.delete(vuelo_id, diahora_sale)
+        print "Eliminatoreando la instanzia de vuelo!"
+    
 def main():
         app = QtGui.QApplication (sys.argv)
         ventana = Principal()
