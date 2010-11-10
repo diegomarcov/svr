@@ -7,4 +7,4 @@ class Vuelos(AbstractModel):
         super(Vuelos, self).__init__(conn)
 
         self.tableName = "vuelos"
-        self.id = "vuelo"
+        self.id = "id"

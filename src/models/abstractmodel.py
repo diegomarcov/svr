@@ -25,7 +25,7 @@ class AbstractModel(object):
         self.model = self.conn.query("select * from "+self.tableName)
     
     def delete(self, id):
-        self.conn.update("delete from "+self.tableName+" where "+self.id+"="+str(id))
+        self.conn.update("delete from " + self.tableName + " where " + self.id + " = '" + str(id) + "'")
     
     def getModel(self):
         if self.model == None:

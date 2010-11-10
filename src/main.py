@@ -55,7 +55,10 @@ class Principal (QtGui.QMainWindow):
         self.ventanaActualizacionVuelos.exec_()
     
     def eliminarVuelo(self):
-        print "Eliminatoreando el vuelo!"
+        index = self.ventana.tablaVuelos.selectionModel().currentIndex().row()
+        vuelo_id = self.todosLosVuelos.getModel().record(index).value(0).toString()
+        self.todosLosVuelos.delete(vuelo_id)
+        print "Vuelo eliminado exitosamente."
     
     def mostrarTabInstVuelos(self):
         # Al mostrar devuelta el tab de las instancias de vuelos, volver a 
@@ -73,9 +76,8 @@ class Principal (QtGui.QMainWindow):
         index = self.ventana.tablaSalidas.selectionModel().currentIndex().row()
         vuelo_id = self.todasLasSalidas.getModel().record(index).value(0).toString()
         diahora_sale = self.todasLasSalidas.getModel().record(index).value(1).toString()
-        print index, vuelo_id, diahora_sale
         self.todasLasSalidas.delete(vuelo_id, diahora_sale)
-        print "Eliminatoreando la instanzia de vuelo!"
+        print "Instancia de vuelo eliminada exitosamente."
     
 def main():
         app = QtGui.QApplication (sys.argv)
