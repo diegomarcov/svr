@@ -55,8 +55,13 @@ class Principal (QtGui.QMainWindow):
         self.ventanaActualizacionVuelos.exec_()
     
     def eliminarVuelo(self):
+        # No se puede eliminar un vuelo asi nomas porque fallan los foreign
+        # key constraints de otras tablas. Hay que eliminar todas las instancias
+        # de vuelos que hacen referencia al vuelo a ser eliminado, y luego 
+        # eliminar el vuelo.
         index = self.ventana.tablaVuelos.selectionModel().currentIndex().row()
         vuelo_id = self.todosLosVuelos.getModel().record(index).value(0).toString()
+        print index, vuelo_id
         self.todosLosVuelos.delete(vuelo_id)
         print "Vuelo eliminado exitosamente."
     
