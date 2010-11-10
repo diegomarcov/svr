@@ -17,3 +17,9 @@ class Salidas(AbstractModel):
     def delete(self, vuelo, diahora_sale):
         self.conn.update("delete from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "' and " + self.id2 + " = '" + str(diahora_sale) + "'")
         
+    def deleteAll(self, vuelo):
+        """
+        Este metodo elimina todas las instancias de vuelos asociadas a un vuelo, 
+        definido por el id del vuelo.
+        """
+        self.conn.update("delete from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "'")

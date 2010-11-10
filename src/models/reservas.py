@@ -35,3 +35,11 @@ class Reservas(AbstractModel):
             
     def loadAll(self, vuelo, dia_y_hora):
         self.conn.query("select * from reservas where vuelo = '"+vuelo+"', diahora_sale = '"+dia_y_hora+"'")
+
+    def deleteAll(self, vuelo, diahora_sale):
+        """
+        Este metodo elimina todas las reservas asociadas a una instancia de vuelo, 
+        definida por los dos atributos clave de la tabla salidas: el id del vuelo y el 
+        dia y hora de salida.
+        """
+        self.conn.update("delete from " + self.tableName + "where vuelo = '" + str(vuelo) + "' and diahora_sale = " + str(diahora_sale) + "'")
