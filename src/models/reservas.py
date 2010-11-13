@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from abstractmodel import AbstractModel
 import datetime
 
@@ -18,8 +20,8 @@ class Reservas(AbstractModel):
 #    def delete(self, id)
 
     # este procedimiento se llama con un id particular si se desea modificar; 
-    # para las inserciones, no se pone ningún ID, y por defecto se inserta con una nueva.
-    def save(self, id=-1, estado, precio, forma_de_pago, doc_nro, nombre_cliente, pasaporte, vuelo, diayhora):
+    # para las inserciones, no se pone ningun ID, y por defecto se inserta con una nueva.
+    def save(self, estado, precio, forma_de_pago, doc_nro, nombre_cliente, pasaporte, vuelo, diayhora, id=-1):
         if id != (-1):
         # es una modificacion
             self.conn.update("update "+self.tableName+" set estado='"+estado+"', precio="+precio+", forma_de_pago='"+forma_de_pago+"', doc_nro="+doc_nro+", nombre_cliente='"+nombre_cliente+"', pasaporte="+pasaporte+", vuelo='"+vuelo+"', diahora_sale='"+diayhora+"' where id="+id)
@@ -42,4 +44,4 @@ class Reservas(AbstractModel):
         definida por los dos atributos clave de la tabla salidas: el id del vuelo y el 
         dia y hora de salida.
         """
-        self.conn.update("delete from " + self.tableName + "where vuelo = '" + str(vuelo) + "' and diahora_sale = " + str(diahora_sale) + "'")
+        self.conn.update("delete from " + self.tableName + " where (vuelo = '" + str(vuelo) + "') and (diahora_sale = '" + str(diahora_sale) + "')")

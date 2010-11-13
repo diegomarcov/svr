@@ -8,6 +8,7 @@ from ActualizarSalidasDialog import ActualizarSalidasDialog
 from ActualizarVuelosDialog import ActualizarVuelosDialog
 from models.vuelos import Vuelos
 from models.salidas import Salidas
+from models.reservas import Reservas
 
 class Principal (QtGui.QMainWindow):
     def __init__(self):
@@ -62,26 +63,6 @@ class Principal (QtGui.QMainWindow):
         # Y para eliminar una instancia de vuelo hay que eliminar todas las 
         # reservas asociadas a ella.
 
-        # Traceback (most recent call last):
-        #   File "main.py", line 65, in eliminarVuelo
-        #     self.todosLosVuelos.delete(vuelo_id)
-        #   File "/home/igaray/Documents/Personal/uns/materias actuales/agps/2010/proyecto/implementacion/svr/src/models/abstractmodel.py", line 28, in delete
-        #     self.conn.update("delete from " + self.tableName + " where " + self.id + " = '" + str(id) + "'")
-        #   File "/home/igaray/Documents/Personal/uns/materias actuales/agps/2010/proyecto/implementacion/svr/src/connection/connection.py", line 107, in update
-        #     raise Error(msg,"Error de conexion.")
-        # connection.error.Error Error al intentar actualizar la Base de Datos: Cannot delete or update a parent row: a foreign key constraint fails (`svr`.`salidas`, CONSTRAINT `salidas_ibfk_1` FOREIGN KEY (`vuelo`) REFERENCES `vuelos` (`id`)) QMYSQL3: Unable to execute statement
-
-        # y ademas:
-        
-        # Traceback (most recent call last):
-        #   File "main.py", line 80, in eliminarVuelo
-        #     self.todasLasSalidas.deleteAll(vuelo_id)
-        #   File "/home/igaray/Documents/Personal/uns/materias actuales/agps/2010/proyecto/implementacion/svr/src/models/salidas.py", line 25, in deleteAll
-        #     self.conn.update("delete from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "'")
-        #   File "/home/igaray/Documents/Personal/uns/materias actuales/agps/2010/proyecto/implementacion/svr/src/connection/connection.py", line 107, in update
-        #     raise Error(msg,"Error de conexion.")
-        # connection.error.Error Error al intentar actualizar la Base de Datos: Cannot delete or update a parent row: a foreign key constraint fails (`svr`.`reservas`, CONSTRAINT `reservas_ibfk_1` FOREIGN KEY (`vuelo`, `diahora_sale`) REFERENCES `salidas` (`vuelo`, `diahora_sale`)) QMYSQL3: Unable to execute statement
-
         # Lo mismo hay que corregir en el metodo eliminarInstanciaVuelo, a 
         # veces tiene exito porque justo se selecciona una instancia de vuelo 
         # que no tiene reservas asociadas.
@@ -117,6 +98,11 @@ class Principal (QtGui.QMainWindow):
         index = self.ventana.tablaSalidas.selectionModel().currentIndex().row()
         vuelo_id = self.todasLasSalidas.getModel().record(index).value(0).toString()
         diahora_sale = self.todasLasSalidas.getModel().record(index).value(1).toString()
+
+        # Borrar todas las reservas asociadas a esta instancia de vuelo.
+        reservas = Reservas(self.conn)
+        reservas.deleteAll(vuelo_id, diahora_sale)
+
         self.todasLasSalidas.delete(vuelo_id, diahora_sale)
         print "Instancia de vuelo eliminada exitosamente."
     
