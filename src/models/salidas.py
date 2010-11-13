@@ -14,6 +14,13 @@ class Salidas(AbstractModel):
         self.id1 = "vuelo"
         self.id2 = "diahora_sale"
 
+    def loadAllFlightInstances(self, vuelo):
+        """
+        Carga todas las instancias de vuelos asociadas a un vuelo. 
+        """
+        print                        "select * from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "'" 
+        self.model = self.conn.query("select * from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "'")
+
     def delete(self, vuelo, diahora_sale):
         self.conn.update("delete from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "' and " + self.id2 + " = '" + str(diahora_sale) + "'")
         

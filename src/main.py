@@ -48,46 +48,48 @@ class Principal (QtGui.QMainWindow):
         self.connect(self.ventana.btnAgregarInstVuelos,   QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnModificarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnEliminarInstVuelos,  QtCore.SIGNAL('clicked()'), self.eliminarInstanciaVuelo)
+    
+    def refreshTableViews(self):
+        self.todosLosVuelos.loadAll()
+        self.ventana.tablaVuelos.setModel(self.todosLosVuelos.model)
+        self.todasLasSalidas.loadAll()
+        self.ventana.tablaSalidas.setModel(self.todasLasSalidas.model)
         
     def mostrarTabVuelos(self):
+        self.refreshTableViews()
         self.ventana.stackedWidget.setCurrentIndex(1)
     
     def mostrarActualizacionVuelos(self):
         self.ventanaActualizacionVuelos.exec_()
     
     def eliminarVuelo(self):
-        # No se puede eliminar un vuelo asi nomas porque fallan los foreign
-        # key constraints de otras tablas. Hay que eliminar todas las instancias
-        # de vuelos que hacen referencia al vuelo a ser eliminado, y luego 
-        # eliminar el vuelo.
-        # Y para eliminar una instancia de vuelo hay que eliminar todas las 
-        # reservas asociadas a ella.
-
-        # Lo mismo hay que corregir en el metodo eliminarInstanciaVuelo, a 
-        # veces tiene exito porque justo se selecciona una instancia de vuelo 
-        # que no tiene reservas asociadas.
-        
-        # - Aki
-
         index = self.ventana.tablaVuelos.selectionModel().currentIndex().row()
         vuelo_id = self.todosLosVuelos.getModel().record(index).value(0).toString()
         print "Selected index: ", index, "ID: ", vuelo_id
 
         # Con el id del vuelo, eliminar todas las salidas con ese id de vuelo.
-        # OJO: hay que eliminar todas las reservas asociadas con cada instancia de vuelo antes de poder borrar una instancia. 
-        # Agregue un metodo en el modelo de reservas para hacer esto, deleteAll
+        modelo_reservas = Reservas(self.conn)
+        salidas  = Salidas(self.conn)
+        salidas.loadAllFlightInstances(vuelo_id)
+        modelo_salidas = salidas.getModel()
+
+        for salida in range(modelo_salidas.rowCount()):
+            # Borrar todas las reservas asociadas a esta instancia de vuelo.
+            diahora_sale = modelo_salidas.record(salida).value(1).toString()
+            print "Eliminando reservas de la instancia de de vuelo: ", vuelo_id, diahora_sale
+            modelo_reservas.deleteAll(vuelo_id, diahora_sale)
+
         print "Eliminando todas las instancias de este vuelo..."
         self.todasLasSalidas.deleteAll(vuelo_id)
         print "Eliminando el vuelo..."
-        #self.todosLosVuelos.delete(vuelo_id)
+        self.todosLosVuelos.delete(vuelo_id)
         print "Vuelo eliminado exitosamente."
+        self.refreshTableViews()
     
     def mostrarTabInstVuelos(self):
         # Al mostrar devuelta el tab de las instancias de vuelos, volver a 
         # cargar los datos en la tabla.
-        self.todasLasSalidas = Salidas(self.conn)
-        self.todasLasSalidas.loadAll()
-        self.ventana.tablaSalidas.setModel(self.todasLasSalidas.model)
+        self.refreshTableViews()
         self.ventana.stackedWidget.setCurrentIndex(0)
     
     def mostrarActualizacionInstanciasVuelos(self):
@@ -103,8 +105,11 @@ class Principal (QtGui.QMainWindow):
         reservas = Reservas(self.conn)
         reservas.deleteAll(vuelo_id, diahora_sale)
 
+        # Ahora que las restricciones de clave foraneas estan satisfechas, 
+        # efectivamente borrar la instancia de vuelo.
         self.todasLasSalidas.delete(vuelo_id, diahora_sale)
         print "Instancia de vuelo eliminada exitosamente."
+        self.refreshTableViews()
     
 def main():
         app = QtGui.QApplication (sys.argv)
