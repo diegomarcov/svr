@@ -25,3 +25,10 @@ class Vuelos(AbstractModel):
     
     def update(self, oldid, newid, salida, llegada):
         self.conn.update("update "+self.tableName+" set id='"+newid+"', aeropuerto_salida='"+salida+"', aeropuerto_llegada='"+llegada+"' where id='"+oldid+"'")
+
+    def loadAll(self):
+        self.model = self.conn.query("select * from "+self.tableName)
+        self.model.setHeaderData(0, QtCore.Qt.Horizontal, "Identificador")
+        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Aeropuerto de Salida")
+        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Aeropuerto de Llegada")
+

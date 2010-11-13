@@ -14,11 +14,17 @@ class Salidas(AbstractModel):
         self.id1 = "vuelo"
         self.id2 = "diahora_sale"
 
+    def loadAll(self):
+        self.model = self.conn.query("select * from "+self.tableName)
+        self.model.setHeaderData(0, QtCore.Qt.Horizontal, "Vuelo")
+        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Dia y Hora de Salida")
+        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Dia y Hora de Llegada")
+        self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Estado")
+        
     def loadAllFlightInstances(self, vuelo):
         """
         Carga todas las instancias de vuelos asociadas a un vuelo. 
         """
-        print                        "select * from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "'" 
         self.model = self.conn.query("select * from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "'")
 
     def delete(self, vuelo, diahora_sale):
