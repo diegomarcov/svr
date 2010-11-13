@@ -75,6 +75,9 @@
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
          </widget>
         </item>
         <item row="2" column="0" colspan="3">
@@ -137,6 +140,18 @@
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>150</number>
+          </attribute>
          </widget>
         </item>
         <item row="1" column="0" colspan="3">
@@ -184,7 +199,7 @@
      <x>0</x>
      <y>0</y>
      <width>686</width>
-     <height>20</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMen">
@@ -200,12 +215,12 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionDesloguearse">
    <property name="text">
-    <string>Log out</string>
+    <string>Acerca de...</string>
    </property>
   </action>
   <action name="actionAcerca_de">
    <property name="text">
-    <string>Acerca de...</string>
+    <string>Salir</string>
    </property>
   </action>
  </widget>
