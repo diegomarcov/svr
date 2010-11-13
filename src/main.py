@@ -11,6 +11,7 @@ from models.salidas import Salidas
 from models.reservas import Reservas
 
 class Principal (QtGui.QMainWindow):
+
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         
@@ -49,19 +50,23 @@ class Principal (QtGui.QMainWindow):
         self.connect(self.ventana.btnModificarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnEliminarInstVuelos,  QtCore.SIGNAL('clicked()'), self.eliminarInstanciaVuelo)
     
+    #--------------------------------------------------------------------------#
     def refreshTableViews(self):
         self.todosLosVuelos.loadAll()
         self.ventana.tablaVuelos.setModel(self.todosLosVuelos.model)
         self.todasLasSalidas.loadAll()
         self.ventana.tablaSalidas.setModel(self.todasLasSalidas.model)
         
+    #--------------------------------------------------------------------------#
     def mostrarTabVuelos(self):
         self.refreshTableViews()
         self.ventana.stackedWidget.setCurrentIndex(1)
     
+    #--------------------------------------------------------------------------#
     def mostrarActualizacionVuelos(self):
         self.ventanaActualizacionVuelos.exec_()
     
+    #--------------------------------------------------------------------------#
     def eliminarVuelo(self):
         index = self.ventana.tablaVuelos.selectionModel().currentIndex().row()
         vuelo_id = self.todosLosVuelos.getModel().record(index).value(0).toString()
@@ -86,19 +91,22 @@ class Principal (QtGui.QMainWindow):
         print "Vuelo eliminado exitosamente."
         self.refreshTableViews()
     
+    #--------------------------------------------------------------------------#
     def mostrarTabInstVuelos(self):
         # Al mostrar devuelta el tab de las instancias de vuelos, volver a 
         # cargar los datos en la tabla.
         self.refreshTableViews()
         self.ventana.stackedWidget.setCurrentIndex(0)
     
+    #--------------------------------------------------------------------------#
     def mostrarActualizacionInstanciasVuelos(self):
         self.ventanaActualizacionSalida.exec_()
     
+    #--------------------------------------------------------------------------#
     def eliminarInstanciaVuelo(self):
         # Obtener el id de la salida seleccionada
-        index = self.ventana.tablaSalidas.selectionModel().currentIndex().row()
-        vuelo_id = self.todasLasSalidas.getModel().record(index).value(0).toString()
+        index        = self.ventana.tablaSalidas.selectionModel().currentIndex().row()
+        vuelo_id     = self.todasLasSalidas.getModel().record(index).value(0).toString()
         diahora_sale = self.todasLasSalidas.getModel().record(index).value(1).toString()
 
         # Borrar todas las reservas asociadas a esta instancia de vuelo.
@@ -111,6 +119,7 @@ class Principal (QtGui.QMainWindow):
         print "Instancia de vuelo eliminada exitosamente."
         self.refreshTableViews()
     
+#------------------------------------------------------------------------------#
 def main():
         app = QtGui.QApplication (sys.argv)
         ventana = Principal()

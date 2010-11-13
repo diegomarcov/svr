@@ -8,3 +8,9 @@ class Vuelos(AbstractModel):
 
         self.tableName = "vuelos"
         self.id = "id"
+
+    def loadAll(self):
+        self.model = self.conn.query("select * from "+self.tableName)
+        self.model.setHeaderData(0, QtCore.Qt.Horizontal, "Identificador")
+        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Aeropuerto de Salida")
+        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Aeropuerto de Llegada")
