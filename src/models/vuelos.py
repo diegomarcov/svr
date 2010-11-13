@@ -24,6 +24,11 @@ class Vuelos(AbstractModel):
         self.conn.update("insert into "+self.tableName+" (id, aeropuerto_salida, aeropuerto_llegada) values ('"+id+"', '"+salida+"', '"+llegada+"')")
     
     def update(self, oldid, newid, salida, llegada):
+        print oldid
+        print newid
+        print salida
+        print llegada
+        print            "update "+self.tableName+" set id='"+newid+"', aeropuerto_salida='"+salida+"', aeropuerto_llegada='"+llegada+"' where id='"+oldid+"'"
         self.conn.update("update "+self.tableName+" set id='"+newid+"', aeropuerto_salida='"+salida+"', aeropuerto_llegada='"+llegada+"' where id='"+oldid+"'")
 
     def loadAll(self):
