@@ -34,18 +34,18 @@ class Principal (QtGui.QMainWindow):
         self.todasLasSalidas.loadAll()
         self.ventana.tablaSalidas.setModel(self.todasLasSalidas.model)
         
-        # Creacion de la ventana para actualizacion de los vuelos
+        # Creacion de la ventana para la alta y actualizacion de los vuelos
         self.ventanaActualizacionVuelos = ActualizarVuelosDialog(parent = self, conn = self.conn)
         
+        # Creacion del dialog ventana para la alta de las salidas.
+        self.ventanaAgregarSalidas = AgregarSalidasDialog()
+
         # Creacion del dialog ventana para la actualizacion de las salidas
         self.ventanaActualizacionSalida = ActualizarSalidasDialog()
         
-        # Creacion del dialog ventana para la alta de las salidas.
-        self.ventanaAltaVuelos = AgregarSalidasDialog()
-
         # Signals de los botones de la interface del sistema
         self.connect(self.ventana.btnVuelos,              QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
-        self.connect(self.ventana.btnAgregarVuelo,        QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
+        #self.connect(self.ventana.btnAgregarVuelo,        QtCore.SIGNAL('clicked()'), self.mostrarAltaVuelos)
         self.connect(self.ventana.btnModificarVuelo,      QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
         self.connect(self.ventana.btnEliminarVuelo,       QtCore.SIGNAL('clicked()'), self.eliminarVuelo)
         
@@ -53,7 +53,8 @@ class Principal (QtGui.QMainWindow):
         self.connect(self.ventana.btnAgregarInstVuelos,   QtCore.SIGNAL('clicked()'), self.mostrarAltaInstanciasVuelos)
         self.connect(self.ventana.btnModificarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnEliminarInstVuelos,  QtCore.SIGNAL('clicked()'), self.eliminarInstanciaVuelo)
-    
+
+
     #--------------------------------------------------------------------------#
     def refreshTableViews(self):
         self.todosLosVuelos.loadAll()
@@ -72,6 +73,11 @@ class Principal (QtGui.QMainWindow):
 
     #--------------------------------------------------------------------------#
     def mostrarActualizacionVuelos(self):
+        index = self.ventana.tablaVuelos.selectionModel().currentIndex().row()
+        vuelo_id = self.todosLosVuelos.getModel().record(index).value(0).toString()
+        origen   = self.todosLosVuelos.getModel().record(index).value(1).toString() 
+        destino  = self.todosLosVuelos.getModel().record(index).value(2).toString()  
+        self.ventanaActualizacionVuelos.setData(vuelo_id, origen, destino)
         self.ventanaActualizacionVuelos.exec_()
     
     #--------------------------------------------------------------------------#
@@ -110,6 +116,14 @@ class Principal (QtGui.QMainWindow):
     def mostrarActualizacionInstanciasVuelos(self):
         self.ventanaActualizacionSalida.exec_()
     
+    #--------------------------------------------------------------------------#
+    def agregarInstanciaVuelo(self):
+        pass
+
+    #--------------------------------------------------------------------------#
+    def modificarInstanciaVuelo(self):
+        pass
+
     #--------------------------------------------------------------------------#
     def eliminarInstanciaVuelo(self):
         # Obtener el id de la salida seleccionada
