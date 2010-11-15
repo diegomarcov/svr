@@ -51,9 +51,9 @@ class ActualizarVuelosDialog(QtGui.QDialog):
     #--------------------------------------------------------------------------#
     def modificarVuelo(self):
         # recuperar los datos y modificar el vuelo 
-        aeropuerto_origen   = self.ui.comboBoxOrigen.currentText
-        aeropuerto_destino  = self.ui.comboBoxDestino.currentText
-        nombre              = self.ui.lineEditNombreVuelo.text
+        aeropuerto_origen   = self.ui.comboBoxOrigen.currentText()
+        aeropuerto_destino  = self.ui.comboBoxDestino.currentText()
+        nombre              = self.ui.lineEditNombreVuelo.text()
         vuelos              = Vuelos(self.conn)
         vuelos.update(self.vuelo_id, nombre, aeropuerto_origen, aeropuerto_destino)
 

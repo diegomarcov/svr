@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 
 from connection.connection   import Connection
@@ -10,6 +11,7 @@ from AgregarSalidasDialog    import AgregarSalidasDialog
 from models.vuelos           import Vuelos
 from models.salidas          import Salidas
 from models.reservas         import Reservas
+from AgregarVuelosDialog     import AgregarVuelosDialog
 
 class Principal (QtGui.QMainWindow):
 
@@ -34,7 +36,10 @@ class Principal (QtGui.QMainWindow):
         self.todasLasSalidas.loadAll()
         self.ventana.tablaSalidas.setModel(self.todasLasSalidas.model)
         
-        # Creacion de la ventana para la alta y actualizacion de los vuelos
+        # Creacion de la ventana para la creación de vuelos
+        self.ventanaAltaVuelos = AgregarVuelosDialog(parent = self, conn = self.conn)
+        
+        # Creacion de la ventana para la actualizacion de los vuelos
         self.ventanaActualizacionVuelos = ActualizarVuelosDialog(parent = self, conn = self.conn)
         
         # Creacion del dialog ventana para la alta de las salidas.
@@ -42,10 +47,10 @@ class Principal (QtGui.QMainWindow):
 
         # Creacion del dialog ventana para la actualizacion de las salidas
         self.ventanaActualizacionSalida = ActualizarSalidasDialog()
-        
+                
         # Signals de los botones de la interface del sistema
         self.connect(self.ventana.btnVuelos,              QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
-        #self.connect(self.ventana.btnAgregarVuelo,        QtCore.SIGNAL('clicked()'), self.mostrarAltaVuelos)
+        self.connect(self.ventana.btnAgregarVuelo,        QtCore.SIGNAL('clicked()'), self.mostrarAltaVuelos)
         self.connect(self.ventana.btnModificarVuelo,      QtCore.SIGNAL('clicked()'), self.mostrarActualizacionVuelos)
         self.connect(self.ventana.btnEliminarVuelo,       QtCore.SIGNAL('clicked()'), self.eliminarVuelo)
         
@@ -64,13 +69,12 @@ class Principal (QtGui.QMainWindow):
         
     #--------------------------------------------------------------------------#
     def mostrarTabVuelos(self):
-        self.refreshTableViews()
         self.ventana.stackedWidget.setCurrentIndex(1)
                                                                                             
     #--------------------------------------------------------------------------#
-    def mostrarAltaInstanciasVuelos(self):
+    def mostrarAltaVuelos(self):
         self.ventanaAltaVuelos.exec_()
-
+        self.refreshTableViews()
     #--------------------------------------------------------------------------#
     def mostrarActualizacionVuelos(self):
         index = self.ventana.tablaVuelos.selectionModel().currentIndex().row()
@@ -79,6 +83,7 @@ class Principal (QtGui.QMainWindow):
         destino  = self.todosLosVuelos.getModel().record(index).value(2).toString()  
         self.ventanaActualizacionVuelos.setData(vuelo_id, origen, destino)
         self.ventanaActualizacionVuelos.exec_()
+        self.refreshTableViews()
     
     #--------------------------------------------------------------------------#
     def eliminarVuelo(self):
@@ -111,18 +116,16 @@ class Principal (QtGui.QMainWindow):
         # cargar los datos en la tabla.
         self.refreshTableViews()
         self.ventana.stackedWidget.setCurrentIndex(0)
-    
+
+    #--------------------------------------------------------------------------#
+    def mostrarAltaInstanciasVuelos(self):
+        self.ventanaAgregarSalidas.exec_()
+        self.refreshTableViews()
+        
     #--------------------------------------------------------------------------#
     def mostrarActualizacionInstanciasVuelos(self):
         self.ventanaActualizacionSalida.exec_()
-    
-    #--------------------------------------------------------------------------#
-    def agregarInstanciaVuelo(self):
-        pass
-
-    #--------------------------------------------------------------------------#
-    def modificarInstanciaVuelo(self):
-        pass
+        self.refreshTableViews()
 
     #--------------------------------------------------------------------------#
     def eliminarInstanciaVuelo(self):
