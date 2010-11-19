@@ -77,13 +77,15 @@ class Principal (QtGui.QMainWindow):
         self.refreshTableViews()
     #--------------------------------------------------------------------------#
     def mostrarActualizacionVuelos(self):
-        index = self.ventana.tablaVuelos.selectionModel().currentIndex().row()
-        vuelo_id = self.todosLosVuelos.getModel().record(index).value(0).toString()
-        origen   = self.todosLosVuelos.getModel().record(index).value(1).toString() 
-        destino  = self.todosLosVuelos.getModel().record(index).value(2).toString()  
-        self.ventanaActualizacionVuelos.setData(vuelo_id, origen, destino)
-        self.ventanaActualizacionVuelos.exec_()
-        self.refreshTableViews()
+        # compruebo que haya algún item seleccionado
+        if (self.ventana.tablaVuelos.selectedIndexes()):
+            index = self.ventana.tablaVuelos.selectionModel().currentIndex().row()
+            vuelo_id = self.todosLosVuelos.getModel().record(index).value(0).toString()
+            origen   = self.todosLosVuelos.getModel().record(index).value(1).toString() 
+            destino  = self.todosLosVuelos.getModel().record(index).value(2).toString()  
+            self.ventanaActualizacionVuelos.setData(vuelo_id, origen, destino)
+            self.ventanaActualizacionVuelos.exec_()
+            self.refreshTableViews()
     
     #--------------------------------------------------------------------------#
     def eliminarVuelo(self):
@@ -124,8 +126,10 @@ class Principal (QtGui.QMainWindow):
         
     #--------------------------------------------------------------------------#
     def mostrarActualizacionInstanciasVuelos(self):
-        self.ventanaActualizacionSalida.exec_()
-        self.refreshTableViews()
+        # compruebo que haya algún item seleccionado
+        if(self.ventana.tablaSalidas.selectedIndexes()):
+            self.ventanaActualizacionSalida.exec_()
+            self.refreshTableViews()
 
     #--------------------------------------------------------------------------#
     def eliminarInstanciaVuelo(self):

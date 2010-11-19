@@ -56,5 +56,3 @@ class ActualizarVuelosDialog(QtGui.QDialog):
         nombre              = self.ui.lineEditNombreVuelo.text()
         vuelos              = Vuelos(self.conn)
         vuelos.update(self.vuelo_id, nombre, aeropuerto_origen, aeropuerto_destino)
-
-
