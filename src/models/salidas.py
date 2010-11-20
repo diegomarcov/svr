@@ -36,3 +36,6 @@ class Salidas(AbstractModel):
         definido por el id del vuelo.
         """
         self.conn.update("delete from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "'")
+            
+    def insert(self, vuelo_id, diahora_sale, diahora_llega, estado):
+        self.conn.update("insert into " + self.tableName + " (vuelo, diahora_sale, diahora_llega, estado) values ('"+ vuelo_id + "', '"+ diahora_sale +"', '" + diahora_llega + "', '" + estado + "')")

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'agregarInstanciasVuelo.ui'
 #
-# Created: Sat Nov 13 15:20:44 2010
-#      by: PyQt4 UI code generator 4.7.6
+# Created: Sat Nov 20 14:02:22 2010
+#      by: PyQt4 UI code generator 4.7.7
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -66,9 +66,9 @@ class Ui_AgregarSalidas(object):
         self.label = QtGui.QLabel(AgregarSalidas)
         self.label.setObjectName(_fromUtf8("label"))
         self.gridLayout.addWidget(self.label, 0, 0, 1, 2)
-        self.comboBox = QtGui.QComboBox(AgregarSalidas)
-        self.comboBox.setObjectName(_fromUtf8("comboBox"))
-        self.gridLayout.addWidget(self.comboBox, 0, 2, 1, 2)
+        self.comboBoxVuelos = QtGui.QComboBox(AgregarSalidas)
+        self.comboBoxVuelos.setObjectName(_fromUtf8("comboBoxVuelos"))
+        self.gridLayout.addWidget(self.comboBoxVuelos, 0, 2, 1, 2)
 
         self.retranslateUi(AgregarSalidas)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), AgregarSalidas.accept)
