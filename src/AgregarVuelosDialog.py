@@ -9,11 +9,9 @@ class AgregarVuelosDialog(QtGui.QDialog):
     def setup(self, conn):
         self.ui = Ui_ActualizarVuelo()
         self.ui.setupUi(self)
+
         aeropuertos = Aeropuertos(self.conn)
         aeropuertos.loadAll()
-        
-        print "-------------------------- Lista de aeropuertos! --------------------------\n"
-        print aeropuertos.model
         self.ui.comboBoxOrigen.setModel(aeropuertos.model)
         self.ui.comboBoxDestino.setModel(aeropuertos.model)
         

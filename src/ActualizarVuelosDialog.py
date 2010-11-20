@@ -3,6 +3,7 @@ from PyQt4 import QtCore, QtGui
 from ui.actualizacionVuelos import Ui_ActualizarVuelo
 from models.aeropuertos     import Aeropuertos
 from models.vuelos          import Vuelos
+from connection.error       import Error
 
 class ActualizarVuelosDialog(QtGui.QDialog):
 
@@ -23,8 +24,6 @@ class ActualizarVuelosDialog(QtGui.QDialog):
         # self.ui.comboBoxDestino.addItems(listaStrAeropuertos)
         aeropuertos.loadAll()
         
-        print "-------------------------- Lista de aeropuertos! --------------------------\n"
-        print aeropuertos.model
         self.ui.comboBoxOrigen.setModel(aeropuertos.model)
         self.ui.comboBoxDestino.setModel(aeropuertos.model)
         
@@ -39,12 +38,9 @@ class ActualizarVuelosDialog(QtGui.QDialog):
         self.vuelo_id = vuelo_id
         self.origen   = origen
         self.destino  = destino
-
         self.ui.lineEditNombreVuelo.setText(self.vuelo_id)
-        
         origen_index = self.ui.comboBoxOrigen.findText(self.origen)
         self.ui.comboBoxOrigen.setCurrentIndex(origen_index)
-        
         destino_index = self.ui.comboBoxDestino.findText(destino)
         self.ui.comboBoxDestino.setCurrentIndex(destino_index)
 
@@ -55,4 +51,9 @@ class ActualizarVuelosDialog(QtGui.QDialog):
         aeropuerto_destino  = self.ui.comboBoxDestino.currentText()
         nombre              = self.ui.lineEditNombreVuelo.text()
         vuelos              = Vuelos(self.conn)
-        vuelos.update(self.vuelo_id, nombre, aeropuerto_origen, aeropuerto_destino)
+        #vuelos.update(self.vuelo_id, nombre, aeropuerto_origen, aeropuerto_destino)
+
+        try:
+            vuelos.update(self.vuelo_id, nombre, aeropuerto_origen, aeropuerto_destino)
+        except Error:
+            qmb = QtGui.QMessageBox().critical(self, "Error", "Hay salidas asociadas a este vuelo.", QtGui.QMessageBox.Ok)

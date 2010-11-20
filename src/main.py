@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
 
@@ -43,7 +44,7 @@ class Principal (QtGui.QMainWindow):
         self.ventanaActualizacionVuelos = ActualizarVuelosDialog(parent = self, conn = self.conn)
         
         # Creacion del dialog ventana para la alta de las salidas.
-        self.ventanaAgregarSalidas = AgregarSalidasDialog()
+        self.ventanaAgregarSalidas = AgregarSalidasDialog(parent = self, conn = self.conn)
 
         # Creacion del dialog ventana para la actualizacion de las salidas
         self.ventanaActualizacionSalida = ActualizarSalidasDialog()
@@ -75,6 +76,7 @@ class Principal (QtGui.QMainWindow):
     def mostrarAltaVuelos(self):
         self.ventanaAltaVuelos.exec_()
         self.refreshTableViews()
+
     #--------------------------------------------------------------------------#
     def mostrarActualizacionVuelos(self):
         # compruebo que haya algún item seleccionado
@@ -128,8 +130,16 @@ class Principal (QtGui.QMainWindow):
     def mostrarActualizacionInstanciasVuelos(self):
         # compruebo que haya algún item seleccionado
         if(self.ventana.tablaSalidas.selectedIndexes()):
-            self.ventanaActualizacionSalida.exec_()
+
+            index          = self.ventana.tablaSalidas.selectionModel().currentIndex().row()
+            vuelo_id       = self.todasLasSalidas.getModel().record(index).value(0).toString()
+            diahora_sale   = self.todasLasSalidas.getModel().record(index).value(1).toString()
+            diahora_llega  = self.todasLasSalidas.getModel().record(index).value(2).toString()
+            estado         = self.todasLasSalidas.getModel().record(index).value(3).toString()
+            print index, vuelo_id,  diahora_sale, diahora_llega, estado
+            self.ventanaActualizacionSalida.setData(vuelo_id, diahora_sale, diahora_llega, estado)
             self.refreshTableViews()
+            self.ventanaActualizacionSalida.exec_()
 
     #--------------------------------------------------------------------------#
     def eliminarInstanciaVuelo(self):
