@@ -1,28 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>VentanaReservas</class>
+ <widget class="QWidget" name="VentanaReservas">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
-    <height>340</height>
+    <width>800</width>
+    <height>520</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>520</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>520</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Reservas</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="labelIDVuelo">
      <property name="text">
       <string>Reservas para el vuelo</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QTableView" name="tablaReservas"/>
+    <widget class="QTableView" name="tablaReservas">
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QFrame" name="frame">
@@ -34,21 +53,21 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btnAgregarReserva">
         <property name="text">
          <string>Agregar</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btnModificarReserva">
         <property name="text">
          <string>Modificar</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="btnEliminarReserva">
         <property name="text">
          <string>Eliminar</string>
         </property>

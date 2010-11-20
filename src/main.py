@@ -12,6 +12,7 @@ from models.vuelos           import Vuelos
 from models.salidas          import Salidas
 from models.reservas         import Reservas
 from AgregarVuelosDialog     import AgregarVuelosDialog
+from ReservasDialog          import ReservasDialog
 
 class Principal (QtGui.QMainWindow):
 
@@ -47,7 +48,10 @@ class Principal (QtGui.QMainWindow):
 
         # Creacion del dialog ventana para la actualizacion de las salidas
         self.ventanaActualizacionSalida = ActualizarSalidasDialog()
-                
+        
+        # Creación del dialog de ventana de reservas
+        self.ventanaReservas = ReservasDialog(parent = self, conn = self.conn)
+        
         # Signals de los botones de la interface del sistema
         self.connect(self.ventana.btnVuelos,              QtCore.SIGNAL('clicked()'), self.mostrarTabVuelos)
         self.connect(self.ventana.btnAgregarVuelo,        QtCore.SIGNAL('clicked()'), self.mostrarAltaVuelos)
@@ -59,7 +63,15 @@ class Principal (QtGui.QMainWindow):
         self.connect(self.ventana.btnModificarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnEliminarInstVuelos,  QtCore.SIGNAL('clicked()'), self.eliminarInstanciaVuelo)
 
+        self.connect(self.ventana.tablaSalidas,           QtCore.SIGNAL('doubleClicked(const QModelIndex &)'), self.mostrarReservas)
 
+    def mostrarReservas(self):
+        index = self.ventana.tablaSalidas.selectionModel().currentIndex().row()
+        vuelo_id = self.todasLasSalidas.getModel().record(index).value(0).toString()
+        dia_y_hora = self.todasLasSalidas.getModel().record(index).value(1).toString()
+        self.ventanaReservas.setData(vuelo_id, dia_y_hora)
+        self.ventanaReservas.exec_()
+    
     #--------------------------------------------------------------------------#
     def refreshTableViews(self):
         self.todosLosVuelos.loadAll()
@@ -70,7 +82,7 @@ class Principal (QtGui.QMainWindow):
     #--------------------------------------------------------------------------#
     def mostrarTabVuelos(self):
         self.ventana.stackedWidget.setCurrentIndex(1)
-                                                                                            
+
     #--------------------------------------------------------------------------#
     def mostrarAltaVuelos(self):
         self.ventanaAltaVuelos.exec_()
