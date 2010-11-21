@@ -1,5 +1,6 @@
-from PyQt4 import QtCore, QtGui
+# -*- coding: utf-8 -*-
 
+from PyQt4 import QtCore, QtGui
 from ui.reservas            import Ui_VentanaReservas
 from models.reservas        import Reservas
 from AgregarReservasDialog  import AgregarReservasDialog
@@ -59,9 +60,14 @@ class ReservasDialog(QtGui.QDialog):
     
     def eliminarReserva(self):
         # si hay al menos una reserva seleccionada
+        
         if (self.ui.tablaReservas.selectedIndexes()):
             rowIndex = self.ui.tablaReservas.selectionModel().currentIndex().row()
-            numeroReserva = self.reservas.getModel().record(rowIndex).value(0).toString()
-            self.reservas.delete(numeroReserva)
-            #reload table
-            self.setData(self.vuelo, self.dia_y_hora)
+            if rowIndex>=0:
+                reply = QtGui.QMessageBox.question(self, "Mensaje", "¿Está seguro que desea eliminar ese registro?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+
+                if reply == QtGui.QMessageBox.Yes:
+                    numeroReserva = self.reservas.getModel().record(rowIndex).value(0).toString()
+                    self.reservas.delete(numeroReserva)
+                    #reload table
+                    self.setData(self.vuelo, self.dia_y_hora)

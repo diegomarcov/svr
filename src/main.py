@@ -104,28 +104,32 @@ class Principal (QtGui.QMainWindow):
     #--------------------------------------------------------------------------#
     def eliminarVuelo(self):
         index = self.ventana.tablaVuelos.selectionModel().currentIndex().row()
-        vuelo_id = self.todosLosVuelos.getModel().record(index).value(0).toString()
-        print "Selected index: ", index, "ID: ", vuelo_id
+        if index >= 0:
+            reply = QtGui.QMessageBox.question(self, "Mensaje","¿Está seguro que desea eliminar ese registro?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
 
-        # Con el id del vuelo, eliminar todas las salidas con ese id de vuelo.
-        modelo_reservas = Reservas(self.conn)
-        salidas  = Salidas(self.conn)
-        salidas.loadAllFlightInstances(vuelo_id)
-        modelo_salidas = salidas.getModel()
+            if reply == QtGui.QMessageBox.Yes:
+                vuelo_id = self.todosLosVuelos.getModel().record(index).value(0).toString()
+                print "Selected index: ", index, "ID: ", vuelo_id
 
-        for salida in range(modelo_salidas.rowCount()):
-            # Borrar todas las reservas asociadas a esta instancia de vuelo.
-            diahora_sale = modelo_salidas.record(salida).value(1).toString()
-            print "Eliminando reservas de la instancia de de vuelo: ", vuelo_id, diahora_sale
-            modelo_reservas.deleteAll(vuelo_id, diahora_sale)
+                # Con el id del vuelo, eliminar todas las salidas con ese id de vuelo.
+                modelo_reservas = Reservas(self.conn)
+                salidas  = Salidas(self.conn)
+                salidas.loadAllFlightInstances(vuelo_id)
+                modelo_salidas = salidas.getModel()
 
-        print "Eliminando todas las instancias de este vuelo..."
-        self.todasLasSalidas.deleteAll(vuelo_id)
-        print "Eliminando el vuelo..."
-        self.todosLosVuelos.delete(vuelo_id)
-        print "Vuelo eliminado exitosamente."
-        self.refreshTableViews()
-    
+                for salida in range(modelo_salidas.rowCount()):
+                    # Borrar todas las reservas asociadas a esta instancia de vuelo.
+                    diahora_sale = modelo_salidas.record(salida).value(1).toString()
+                    print "Eliminando reservas de la instancia de de vuelo: ", vuelo_id, diahora_sale
+                    modelo_reservas.deleteAll(vuelo_id, diahora_sale)
+
+                print "Eliminando todas las instancias de este vuelo..."
+                self.todasLasSalidas.deleteAll(vuelo_id)
+                print "Eliminando el vuelo..."
+                self.todosLosVuelos.delete(vuelo_id)
+                print "Vuelo eliminado exitosamente."
+                self.refreshTableViews()
+        
     #--------------------------------------------------------------------------#
     def mostrarTabInstVuelos(self):
         # Al mostrar devuelta el tab de las instancias de vuelos, volver a 
@@ -157,19 +161,22 @@ class Principal (QtGui.QMainWindow):
     def eliminarInstanciaVuelo(self):
         # Obtener el id de la salida seleccionada
         index        = self.ventana.tablaSalidas.selectionModel().currentIndex().row()
-        vuelo_id     = self.todasLasSalidas.getModel().record(index).value(0).toString()
-        diahora_sale = self.todasLasSalidas.getModel().record(index).value(1).toString()
+        if index >=0:
+            reply = QtGui.QMessageBox.question(self, "Mensaje","¿Está seguro que desea eliminar ese registro?", QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
+            if reply == QtGui.QMessageBox.Yes:
+                vuelo_id     = self.todasLasSalidas.getModel().record(index).value(0).toString()
+                diahora_sale = self.todasLasSalidas.getModel().record(index).value(1).toString()
 
-        # Borrar todas las reservas asociadas a esta instancia de vuelo.
-        reservas = Reservas(self.conn)
-        reservas.deleteAll(vuelo_id, diahora_sale)
+                # Borrar todas las reservas asociadas a esta instancia de vuelo.
+                reservas = Reservas(self.conn)
+                reservas.deleteAll(vuelo_id, diahora_sale)
 
-        # Ahora que las restricciones de clave foraneas estan satisfechas, 
-        # efectivamente borrar la instancia de vuelo.
-        self.todasLasSalidas.delete(vuelo_id, diahora_sale)
-        print "Instancia de vuelo eliminada exitosamente."
-        self.refreshTableViews()
-    
+                # Ahora que las restricciones de clave foraneas estan satisfechas, 
+                # efectivamente borrar la instancia de vuelo.
+                self.todasLasSalidas.delete(vuelo_id, diahora_sale)
+                print "Instancia de vuelo eliminada exitosamente."
+                self.refreshTableViews()
+            
 #------------------------------------------------------------------------------#
 def main():
         app = QtGui.QApplication (sys.argv)
