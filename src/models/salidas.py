@@ -13,18 +13,22 @@ class Salidas(AbstractModel):
         self.id1 = "vuelo"
         self.id2 = "diahora_sale"
 
-    def loadAll(self):
-        self.model = self.conn.query("select * from " + self.tableName)
+    def setHeaders(self):
         self.model.setHeaderData(0, QtCore.Qt.Horizontal, "Vuelo")
         self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Dia y Hora de Salida")
         self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Dia y Hora de Llegada")
         self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Estado")
+        
+    def loadAll(self):
+        self.model = self.conn.query("select * from " + self.tableName)
+        self.setHeaders()
 
     def loadAllFlightInstances(self, vuelo):
         """
         Carga todas las instancias de vuelos asociadas a un vuelo. 
         """
         self.model = self.conn.query("select * from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "'")
+        self.setHeaders()
 
     def delete(self, vuelo, diahora_sale):
         self.conn.update("delete from " + self.tableName + " where " + self.id1 + " = '" + str(vuelo) + "' and " + self.id2 + " = '" + str(diahora_sale) + "'")
@@ -43,3 +47,6 @@ class Salidas(AbstractModel):
         print            "update " + self.tableName + " set diahora_sale = '" + diahora_sale2 + "', diahora_llega = '" + diahora_llega + "', estado = '" + estado + "' where (vuelo = '" + vuelo1 + "') and (diahora_sale = '" + diahora_sale1 + "')"
         self.conn.update("update " + self.tableName + " set diahora_sale = '" + diahora_sale2 + "', diahora_llega = '" + diahora_llega + "', estado = '" + estado + "' where (vuelo = '" + vuelo1 + "') and (diahora_sale = '" + diahora_sale1 + "')")
 
+    def loadByDate(self, date):
+        self.model = self.conn.query("select * from salidas where date(diahora_sale) = '%s'" % date)
+        self.setHeaders()

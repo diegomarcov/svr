@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'agregarInstanciasVuelo.ui'
 #
-# Created: Sat Nov 20 14:02:22 2010
-#      by: PyQt4 UI code generator 4.7.7
+# Created: Tue Nov 23 20:31:31 2010
+#      by: PyQt4 UI code generator 4.7.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -43,12 +43,16 @@ class Ui_AgregarSalidas(object):
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.gridLayout_2.addWidget(self.label_2, 0, 0, 1, 1)
         self.dateTimeEditHoraSalida = QtGui.QDateTimeEdit(self.frame)
+        self.dateTimeEditHoraSalida.setDateTime(QtCore.QDateTime(QtCore.QDate(2010, 11, 24), QtCore.QTime(0, 0, 0)))
+        self.dateTimeEditHoraSalida.setMaximumDateTime(QtCore.QDateTime(QtCore.QDate(2012, 12, 31), QtCore.QTime(23, 59, 59)))
         self.dateTimeEditHoraSalida.setMinimumDate(QtCore.QDate(2010, 1, 1))
         self.dateTimeEditHoraSalida.setMinimumTime(QtCore.QTime(0, 0, 0))
         self.dateTimeEditHoraSalida.setCalendarPopup(False)
         self.dateTimeEditHoraSalida.setObjectName(_fromUtf8("dateTimeEditHoraSalida"))
         self.gridLayout_2.addWidget(self.dateTimeEditHoraSalida, 0, 1, 1, 1)
         self.dateTimeEditHoraLlegada = QtGui.QDateTimeEdit(self.frame)
+        self.dateTimeEditHoraLlegada.setDateTime(QtCore.QDateTime(QtCore.QDate(2010, 11, 25), QtCore.QTime(0, 0, 0)))
+        self.dateTimeEditHoraLlegada.setMaximumDateTime(QtCore.QDateTime(QtCore.QDate(2010, 12, 31), QtCore.QTime(23, 59, 59)))
         self.dateTimeEditHoraLlegada.setMinimumDate(QtCore.QDate(2010, 11, 1))
         self.dateTimeEditHoraLlegada.setCalendarPopup(False)
         self.dateTimeEditHoraLlegada.setObjectName(_fromUtf8("dateTimeEditHoraLlegada"))
