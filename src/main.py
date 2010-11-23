@@ -39,7 +39,7 @@ class Principal (QtGui.QMainWindow):
 
         # Cargar salidas en la tabla principal
         self.todasLasSalidas = Salidas(self.conn)
-        self.todasLasSalidas.loadAll()
+        self.todasLasSalidas.loadByDate(self.ventana.calendarioVuelos.selectedDate().toString("yyyy-MM-dd"))
         self.ventana.tablaSalidas.setModel(self.todasLasSalidas.model)
 
         # Creacion de la ventana para la creación de vuelos
@@ -152,7 +152,7 @@ class Principal (QtGui.QMainWindow):
 
     #--------------------------------------------------------------------------#
     def mostrarAltaInstanciasVuelos(self):
-        self.ventanaAgregarSalidas.setData()
+        self.ventanaAgregarSalidas.setData(self.ventana.calendarioVuelos.selectedDate())
         self.ventanaAgregarSalidas.exec_()
         self.refreshTableViews()
 

@@ -48,5 +48,5 @@ class Salidas(AbstractModel):
         self.conn.update("update " + self.tableName + " set diahora_sale = '" + diahora_sale2 + "', diahora_llega = '" + diahora_llega + "', estado = '" + estado + "' where (vuelo = '" + vuelo1 + "') and (diahora_sale = '" + diahora_sale1 + "')")
 
     def loadByDate(self, date):
-        self.model = self.conn.query("select * from reservas where date(diahora_sale) = '%s'" % date)
+        self.model = self.conn.query("select * from salidas where date(diahora_sale) = '%s'" % date)
         self.setHeaders()

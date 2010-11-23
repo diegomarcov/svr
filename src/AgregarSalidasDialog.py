@@ -12,11 +12,16 @@ class AgregarSalidasDialog(QtGui.QDialog):
         vuelos.loadAll()
         self.ui.comboBoxVuelos.setModel(vuelos.getModel())
         self.connect(self.ui.buttonBox, QtCore.SIGNAL('accepted()'), self.agregarSalida)
+        
 
     def __init__(self, parent = None, conn = None):
         super(AgregarSalidasDialog, self).__init__(parent)
         self.conn = conn
         self.setup(self.conn)
+        
+    def setData(self, fecha):
+        self.ui.dateTimeEditHoraSalida.setDate(fecha)
+        self.ui.dateTimeEditHoraLlegada.setDate(fecha)
 
     def agregarSalida(self):
         vuelo_id    = self.ui.comboBoxVuelos.currentText()

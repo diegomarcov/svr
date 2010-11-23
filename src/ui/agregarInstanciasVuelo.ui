@@ -66,6 +66,26 @@
       </item>
       <item row="0" column="1">
        <widget class="QDateTimeEdit" name="dateTimeEditHoraSalida">
+        <property name="dateTime">
+         <datetime>
+          <hour>0</hour>
+          <minute>0</minute>
+          <second>0</second>
+          <year>2010</year>
+          <month>11</month>
+          <day>24</day>
+         </datetime>
+        </property>
+        <property name="maximumDateTime">
+         <datetime>
+          <hour>23</hour>
+          <minute>59</minute>
+          <second>59</second>
+          <year>2012</year>
+          <month>12</month>
+          <day>31</day>
+         </datetime>
+        </property>
         <property name="minimumDate">
          <date>
           <year>2010</year>
@@ -90,6 +110,26 @@
       </item>
       <item row="1" column="1">
        <widget class="QDateTimeEdit" name="dateTimeEditHoraLlegada">
+        <property name="dateTime">
+         <datetime>
+          <hour>0</hour>
+          <minute>0</minute>
+          <second>0</second>
+          <year>2010</year>
+          <month>11</month>
+          <day>25</day>
+         </datetime>
+        </property>
+        <property name="maximumDateTime">
+         <datetime>
+          <hour>23</hour>
+          <minute>59</minute>
+          <second>59</second>
+          <year>2010</year>
+          <month>12</month>
+          <day>31</day>
+         </datetime>
+        </property>
         <property name="minimumDate">
          <date>
           <year>2010</year>
