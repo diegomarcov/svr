@@ -67,6 +67,7 @@ class Principal (QtGui.QMainWindow):
         self.connect(self.ventana.btnModificarInstVuelos, QtCore.SIGNAL('clicked()'), self.mostrarActualizacionInstanciasVuelos)
         self.connect(self.ventana.btnEliminarInstVuelos,  QtCore.SIGNAL('clicked()'), self.eliminarInstanciaVuelo)
         self.connect(self.ventana.tablaSalidas,           QtCore.SIGNAL('doubleClicked(const QModelIndex &)'), self.mostrarReservas)
+        self.connect(self.ventana.calendarioVuelos,       QtCore.SIGNAL('selectionChanged()'), self.mostrarSalidas)
 
         # DIEGOOOOOOOOO
         # self.connect(self.ventana.menuba.wtf("WTF goes here?"), QtCore.SIGNAL( "WTF goes here?" ), sys.exit(app.exec_()))
@@ -75,7 +76,8 @@ class Principal (QtGui.QMainWindow):
     def refreshTableViews(self):
         self.todosLosVuelos.loadAll()
         self.ventana.tablaVuelos.setModel(self.todosLosVuelos.model)
-        self.todasLasSalidas.loadAll()
+        selectedDate = self.ventana.calendarioVuelos.selectedDate().toString("yyyy-MM-dd")
+        self.todasLasSalidas.loadByDate(selectedDate)
         self.ventana.tablaSalidas.setModel(self.todasLasSalidas.model)
 
 
@@ -188,7 +190,11 @@ class Principal (QtGui.QMainWindow):
                 self.refreshTableViews()
 
 
-
+    def mostrarSalidas(self):
+        self.refreshTableViews()
+        
+        
+    
 
 
     # RESERVAS #################################################################
