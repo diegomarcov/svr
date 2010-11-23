@@ -24,6 +24,11 @@ class Principal (QtGui.QMainWindow):
         self.conn.open()
         print "-------------------------- Conexion OK! --------------------------\n"
         
+        # Actualizar las reservas vencidas para que tengan el estado
+        # correspondiente.
+        reservas = Reservas(self.conn)
+        reservas.actualizarReservasVencidas()
+
         # Creacion de la ventana principal
         self.ventana = Ui_MainWindow()
         self.ventana.setupUi(self)
