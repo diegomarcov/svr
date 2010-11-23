@@ -1,0 +1,5 @@
+Cambiar el diagrama de CU (Actualizar reserva)
+Mostrar mensajes de "se realizó con Éxito".
+Mostrar mensaje "SI, NO" de eliminar. (desea eliminar, SI , NO)
+
+faltan terminar las historias de usuario y los test
