@@ -39,6 +39,17 @@ class Reservas(AbstractModel):
 
     def loadAll(self, vuelo, dia_y_hora):
         self.model = self.conn.query("select * from reservas where vuelo = '"+vuelo+"' and diahora_sale = '"+dia_y_hora+"'")
+        self.model.setHeaderData(0, QtCore.Qt.Horizontal, "Numero")
+        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Fecha de realizacion")
+        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Vencimiento")
+        self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Estado")
+        self.model.setHeaderData(4, QtCore.Qt.Horizontal, "Precio")
+        self.model.setHeaderData(5, QtCore.Qt.Horizontal, "Forma de Pago")
+        self.model.setHeaderData(6, QtCore.Qt.Horizontal, "Doc Nro")
+        self.model.setHeaderData(7, QtCore.Qt.Horizontal, "Nombre Cliente")
+        self.model.setHeaderData(8, QtCore.Qt.Horizontal, "Pasaporte")
+        self.model.setHeaderData(9, QtCore.Qt.Horizontal, "Vuelo")
+        self.model.setHeaderData(10, QtCore.Qt.Horizontal, "Dia y Hora de Salida")
 
     def deleteAll(self, vuelo, diahora_sale):
         """
