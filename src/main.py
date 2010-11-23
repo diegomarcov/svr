@@ -135,6 +135,7 @@ class Principal (QtGui.QMainWindow):
 
     #--------------------------------------------------------------------------#
     def mostrarAltaInstanciasVuelos(self):
+        self.ventanaAgregarSalidas.setData()
         self.ventanaAgregarSalidas.exec_()
         self.refreshTableViews()
         
