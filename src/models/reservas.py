@@ -61,3 +61,9 @@ class Reservas(AbstractModel):
 
     def actualizarReservasVencidas(self):
         self.conn.update("update reservas set reservas.estado='Vencida' where (reservas.estado = 'Pendiente') and (vencimiento <= now())") 
+
+    def cantidadReservasVencidas(self):
+        model = self.conn.query("select count(*) from reservas where (vencimiento <= now()) and (estado = 'Pendiente')")
+        #print model.record(0).value(0).toString()
+        return model.record(0).value(0).toString()
+

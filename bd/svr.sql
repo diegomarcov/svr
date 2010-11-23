@@ -58,3 +58,5 @@ CREATE USER 'empleado'@'localhost' IDENTIFIED BY 'empleado';
 
 GRANT SELECT ON svr.*          TO 'empleado'@'localhost';
 GRANT INSERT ON svr.*          TO 'empleado'@'localhost';
+GRANT UPDATE ON svr.*          TO 'empleado'@'localhost';
+GRANT DELETE ON svr.*          TO 'empleado'@'localhost';

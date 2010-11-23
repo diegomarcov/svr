@@ -26,7 +26,11 @@ class Principal (QtGui.QMainWindow):
         # Actualizar las reservas vencidas para que tengan el estado
         # correspondiente.
         reservas = Reservas(self.conn)
-        reservas.actualizarReservasVencidas()
+        reservasVencidas = reservas.cantidadReservasVencidas()
+        if (int(reservasVencidas) > 0):
+            stringo = "Se marcaron %s reservas como vencidas \ndebido a que superaron su fecha de vencimiento." % (reservasVencidas)
+            qmb = QtGui.QMessageBox().information(self, "Aviso", stringo, QtGui.QMessageBox.Ok)
+            reservas.actualizarReservasVencidas()
 
         # Creacion de la ventana principal
         self.ventana = Ui_MainWindow()
@@ -86,13 +90,13 @@ class Principal (QtGui.QMainWindow):
 
     #--------------------------------------------------------------------------#
     def mostrarTabVuelos(self):
-        self.refreshTableViews()
         self.ventana.stackedWidget.setCurrentIndex(1)
+        self.refreshTableViews()
 
     #--------------------------------------------------------------------------#
     def mostrarAltaVuelos(self):
-        self.refreshTableViews()
         self.ventanaAltaVuelos.exec_()
+        self.refreshTableViews()
 
     #--------------------------------------------------------------------------#
     def mostrarActualizacionVuelos(self):
@@ -145,13 +149,14 @@ class Principal (QtGui.QMainWindow):
     def mostrarTabInstVuelos(self):
         # Al mostrar devuelta el tab de las instancias de vuelos, volver a 
         # cargar los datos en la tabla.
-        self.refreshTableViews()
         self.ventana.stackedWidget.setCurrentIndex(0)
+        self.refreshTableViews()
 
     #--------------------------------------------------------------------------#
     def mostrarAltaInstanciasVuelos(self):
-        self.refreshTableViews()
+        self.ventanaAgregarSalidas.setData()
         self.ventanaAgregarSalidas.exec_()
+        self.refreshTableViews()
 
     #--------------------------------------------------------------------------#
     def mostrarActualizacionInstanciasVuelos(self):
@@ -163,8 +168,8 @@ class Principal (QtGui.QMainWindow):
             diahora_llega  = self.todasLasSalidas.getModel().record(index).value(2).toString()
             estado         = self.todasLasSalidas.getModel().record(index).value(3).toString()
             self.ventanaActualizacionSalida.setData(vuelo_id, diahora_sale, diahora_llega, estado)
-            self.refreshTableViews()
             self.ventanaActualizacionSalida.exec_()
+            self.refreshTableViews()
 
     #--------------------------------------------------------------------------#
     def eliminarInstanciaVuelo(self):
