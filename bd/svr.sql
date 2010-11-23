@@ -48,7 +48,6 @@ CREATE TABLE reservas (
     pasaporte           VARCHAR(45) NOT NULL,
     vuelo               VARCHAR(30) NOT NULL,
     diahora_sale        TIMESTAMP NOT NULL,
-    FOREIGN KEY (vuelo, diahora_sale)        REFERENCES salidas (vuelo, diahora_sale),
     PRIMARY KEY (numero)
 ) ENGINE=InnoDB;
 

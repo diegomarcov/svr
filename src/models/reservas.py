@@ -11,7 +11,7 @@ class Reservas(AbstractModel):
 
         self.tableName = "reservas"
         self.id = "numero"
-    
+
 #   Metodos heredados:
 #    def getModel(self)
 #    def get(self, column)
@@ -36,7 +36,7 @@ class Reservas(AbstractModel):
             q = "insert into "+self.tableName+" (fecha_realizacion, vencimiento, estado, precio, forma_de_pago, doc_nro, nombre_cliente, pasaporte, vuelo, diahora_sale) values ('"+fecha_realizacion+"', '"+vencimiento+"', '"+estado+"', "+precio+", '"+forma_de_pago+"', "+ doc_nro+", '"+nombre_cliente+"', "+pasaporte+", '"+vuelo+"', '"+diayhora+"')"
             print q
             self.conn.update(q)
-            
+
     def loadAll(self, vuelo, dia_y_hora):
         self.model = self.conn.query("select * from reservas where vuelo = '"+vuelo+"' and diahora_sale = '"+dia_y_hora+"'")
         self.model.setHeaderData(0, QtCore.Qt.Horizontal, "Numero")
@@ -58,3 +58,6 @@ class Reservas(AbstractModel):
         dia y hora de salida.
         """
         self.conn.update("delete from " + self.tableName + " where (vuelo = '" + str(vuelo) + "') and (diahora_sale = '" + str(diahora_sale) + "')")
+
+    def actualizarReservasVencidas(self):
+        self.conn.update("update reservas set reservas.estado='Vencida' where (reservas.estado = 'Pendiente') and (vencimiento <= now())") 

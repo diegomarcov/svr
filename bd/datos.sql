@@ -253,3 +253,5 @@ insert into reservas (numero, fecha_realizacion, vencimiento, estado, precio, fo
 insert into reservas (numero, fecha_realizacion, vencimiento, estado, precio, forma_de_pago, doc_nro, nombre_cliente, pasaporte, vuelo, diahora_sale) values (5, '2010-01-01', '2011-02-02', 'Vencida', 1000.00, 'Efectivo', 1234, 'juan', 'UTF 8', 'vuelo 1', '2010-01-01 01:01:01');
 insert into reservas (numero, fecha_realizacion, vencimiento, estado, precio, forma_de_pago, doc_nro, nombre_cliente, pasaporte, vuelo, diahora_sale) values (6, '2010-01-01', '2011-02-02', 'Vencida', 1000.00, 'Efectivo', 1234, 'juan', 'UTF 8', 'vuelo 2', '2010-01-01 01:01:01');
 
+insert into reservas (numero, fecha_realizacion, vencimiento, estado, precio, forma_de_pago, doc_nro, nombre_cliente, pasaporte, vuelo, diahora_sale) values (7, '2010-01-01', '2010-10-01', 'Pendiente', 1000.00, 'Efectivo', 1234, 'juan', 'UTF 8', 'vuelo 2', '2010-01-01 01:01:01');
+
