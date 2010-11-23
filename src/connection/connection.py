@@ -19,7 +19,7 @@ class Connection:
         5)    dbPass:     string, password del usuario, valor por defecto="admin".
     *Excepciones: nada.
     """    
-    def __init__(self,dbName,dbDriver="QMYSQL",dbHost="localhost",dbUser="root",dbPass="admin"):
+    def __init__(self,dbName,dbDriver="QMYSQL",dbHost="localhost",dbUser="empleado",dbPass="empleado"):
         
         #Se crea una instancia QSqlDatabase
         self.db=QtSql.QSqlDatabase()
