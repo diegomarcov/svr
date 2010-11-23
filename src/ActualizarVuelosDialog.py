@@ -1,39 +1,29 @@
-from PyQt4 import QtCore, QtGui
-
+# -*- coding: utf-8 -*-
+from PyQt4                  import QtCore, QtGui
 from ui.actualizacionVuelos import Ui_ActualizarVuelo
+from connection.error       import Error
 from models.aeropuertos     import Aeropuertos
 from models.vuelos          import Vuelos
-from connection.error       import Error
 
 class ActualizarVuelosDialog(QtGui.QDialog):
 
-    def setup(self, conn):
-        self.ui = Ui_ActualizarVuelo()
-        self.ui.setupUi(self)
-        aeropuertos = Aeropuertos(self.conn)
-        # listaAeropuertos = aeropuertos.loadAll()
-        # listaStrAeropuertos = QtCore.QStringList()
-        # print "-------------------------- Lista de aeropuertos! --------------------------\n"
-        # print listaAeropuertos
-        # for aeropuerto in listaAeropuertos:
-            # current = aeropuerto.get(0) + aeropuerto.get(1) + aeropuerto.get(2) + aeropuerto.get(3)
-            # print current
-            # listaStrAeropuertos = listaStrAeropuertos << current
-            
-        # self.ui.comboBoxOrigen.addItems(listaStrAeropuertos)
-        # self.ui.comboBoxDestino.addItems(listaStrAeropuertos)
-        aeropuertos.loadAll()
-        
-        self.ui.comboBoxOrigen.setModel(aeropuertos.model)
-        self.ui.comboBoxDestino.setModel(aeropuertos.model)
-        
-        self.connect(self.ui.buttonBox, QtCore.SIGNAL('accepted()'), self.modificarVuelo)
-    
+    #--------------------------------------------------------------------------#
     def __init__(self, parent = None, conn = None, current_name = None):
         super(ActualizarVuelosDialog, self).__init__(parent)
         self.conn = conn
         self.setup(self.conn)
-        
+
+    #--------------------------------------------------------------------------#
+    def setup(self, conn):
+        aeropuertos = Aeropuertos(self.conn)
+        aeropuertos.loadAll()
+        self.ui = Ui_ActualizarVuelo()
+        self.ui.setupUi(self)
+        self.ui.comboBoxOrigen.setModel(aeropuertos.model)
+        self.ui.comboBoxDestino.setModel(aeropuertos.model)
+        self.connect(self.ui.buttonBox, QtCore.SIGNAL('accepted()'), self.modificarVuelo)
+
+    #--------------------------------------------------------------------------#
     def setData(self, vuelo_id, origen, destino):
         self.vuelo_id = vuelo_id
         self.origen   = origen
@@ -51,8 +41,6 @@ class ActualizarVuelosDialog(QtGui.QDialog):
         aeropuerto_destino  = self.ui.comboBoxDestino.currentText()
         nombre              = self.ui.lineEditNombreVuelo.text()
         vuelos              = Vuelos(self.conn)
-        #vuelos.update(self.vuelo_id, nombre, aeropuerto_origen, aeropuerto_destino)
-
         try:
             vuelos.update(self.vuelo_id, nombre, aeropuerto_origen, aeropuerto_destino)
         except Error:
