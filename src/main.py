@@ -12,6 +12,7 @@ from models.vuelos           import Vuelos
 from models.salidas          import Salidas
 from models.reservas         import Reservas
 from AgregarVuelosDialog     import AgregarVuelosDialog
+from about                   import About
 from ReservasDialog          import ReservasDialog
 
 class Principal (QtGui.QMainWindow):
@@ -32,6 +33,8 @@ class Principal (QtGui.QMainWindow):
         self.ventana = Ui_MainWindow()
         self.ventana.setupUi(self)
 
+        self.about = About()
+        
         # Cargar vuelos en la tabla principal
         self.todosLosVuelos = Vuelos(self.conn)
         self.todosLosVuelos.loadAll()
@@ -68,6 +71,8 @@ class Principal (QtGui.QMainWindow):
         self.connect(self.ventana.btnEliminarInstVuelos,  QtCore.SIGNAL('clicked()'), self.eliminarInstanciaVuelo)
         self.connect(self.ventana.tablaSalidas,           QtCore.SIGNAL('doubleClicked(const QModelIndex &)'), self.mostrarReservas)
         self.connect(self.ventana.calendarioVuelos,       QtCore.SIGNAL('selectionChanged()'), self.mostrarSalidas)
+        self.connect(self.ventana.actionAbout,            QtCore.SIGNAL('triggered()'), self.showAbout)
+        self.connect(self.ventana.actionExit,             QtCore.SIGNAL('triggered()'), self.quit)
 
         # DIEGOOOOOOOOO
         # self.connect(self.ventana.menuba.wtf("WTF goes here?"), QtCore.SIGNAL( "WTF goes here?" ), sys.exit(app.exec_()))
@@ -206,6 +211,19 @@ class Principal (QtGui.QMainWindow):
         self.ventanaReservas.setData(vuelo_id, dia_y_hora)
         self.ventanaReservas.exec_()
 
+        
+        
+        
+    # AUXILIARES ###############################################################
+    
+    def showAbout(self):
+        self.about.exec_()
+    
+    def quit(self):
+        sys.exit()
+    
+    
+    
 #------------------------------------------------------------------------------#
 def main():
         app = QtGui.QApplication (sys.argv)

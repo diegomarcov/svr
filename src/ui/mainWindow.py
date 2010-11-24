@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Sat Nov 13 17:37:30 2010
-#      by: PyQt4 UI code generator 4.8
+# Created: Tue Nov 23 20:59:03 2010
+#      by: PyQt4 UI code generator 4.7.6
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -146,13 +146,13 @@ class Ui_MainWindow(object):
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
-        self.actionDesloguearse = QtGui.QAction(MainWindow)
-        self.actionDesloguearse.setObjectName(_fromUtf8("actionDesloguearse"))
-        self.actionAcerca_de = QtGui.QAction(MainWindow)
-        self.actionAcerca_de.setObjectName(_fromUtf8("actionAcerca_de"))
-        self.menuMen.addAction(self.actionDesloguearse)
+        self.actionAbout = QtGui.QAction(MainWindow)
+        self.actionAbout.setObjectName(_fromUtf8("actionAbout"))
+        self.actionExit = QtGui.QAction(MainWindow)
+        self.actionExit.setObjectName(_fromUtf8("actionExit"))
+        self.menuMen.addAction(self.actionAbout)
         self.menuMen.addSeparator()
-        self.menuMen.addAction(self.actionAcerca_de)
+        self.menuMen.addAction(self.actionExit)
         self.menubar.addAction(self.menuMen.menuAction())
 
         self.retranslateUi(MainWindow)
@@ -173,6 +173,6 @@ class Ui_MainWindow(object):
         self.btnModificarVuelo.setText(QtGui.QApplication.translate("MainWindow", "Modificar", None, QtGui.QApplication.UnicodeUTF8))
         self.btnEliminarVuelo.setText(QtGui.QApplication.translate("MainWindow", "Eliminar", None, QtGui.QApplication.UnicodeUTF8))
         self.menuMen.setTitle(QtGui.QApplication.translate("MainWindow", "Menú", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionDesloguearse.setText(QtGui.QApplication.translate("MainWindow", "Acerca de...", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionAcerca_de.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionAbout.setText(QtGui.QApplication.translate("MainWindow", "Acerca de...", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionExit.setText(QtGui.QApplication.translate("MainWindow", "Salir", None, QtGui.QApplication.UnicodeUTF8))
 

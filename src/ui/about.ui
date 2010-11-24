@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>About</class>
+ <widget class="QDialog" name="About">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -89,7 +89,7 @@ Montenegro, Emiliano - LU 83.864</string>
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>About</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -105,7 +105,7 @@ Montenegro, Emiliano - LU 83.864</string>
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>About</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

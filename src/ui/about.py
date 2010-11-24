@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'about.ui'
 #
-# Created: Sat Nov 13 15:53:14 2010
+# Created: Tue Nov 23 21:01:13 2010
 #      by: PyQt4 UI code generator 4.7.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -14,13 +14,13 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(440, 289)
-        self.gridLayout = QtGui.QGridLayout(Dialog)
+class Ui_About(object):
+    def setupUi(self, About):
+        About.setObjectName(_fromUtf8("About"))
+        About.resize(440, 289)
+        self.gridLayout = QtGui.QGridLayout(About)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.label = QtGui.QLabel(Dialog)
+        self.label = QtGui.QLabel(About)
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setWeight(75)
@@ -28,7 +28,7 @@ class Ui_Dialog(object):
         self.label.setFont(font)
         self.label.setObjectName(_fromUtf8("label"))
         self.gridLayout.addWidget(self.label, 0, 0, 1, 3)
-        self.buttonBox = QtGui.QDialogButtonBox(Dialog)
+        self.buttonBox = QtGui.QDialogButtonBox(About)
         self.buttonBox.setMaximumSize(QtCore.QSize(75, 16777215))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Ok)
@@ -39,16 +39,18 @@ class Ui_Dialog(object):
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem1, 1, 0, 1, 1)
 
-        self.retranslateUi(Dialog)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), Dialog.accept)
-        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), Dialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(About)
+        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), About.accept)
+        QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), About.reject)
+        QtCore.QMetaObject.connectSlotsByName(About)
 
-    def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Acerca de svr", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("Dialog", "svr - Sistema de Vuelos y Reservas\n"
+    def retranslateUi(self, About):
+        About.setWindowTitle(QtGui.QApplication.translate("About", "Acerca de svr", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("About", "svr - Sistema de Vuelos y Reservas\n"
+"\n"
 "Administracion y Gestion de Proyectos de Software\n"
-"Segundo cuatrimestre 2010\n"
+"\n"
+"Segundo cuatrimestre 2010 - Comisión 5\n"
 "\n"
 "\n"
 "Integrantes:\n"

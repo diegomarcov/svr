@@ -41,7 +41,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Instanciasdevuelo">
        <layout class="QGridLayout" name="gridLayout">
@@ -308,19 +308,19 @@
     <property name="title">
      <string>Menú</string>
     </property>
-    <addaction name="actionDesloguearse"/>
+    <addaction name="actionAbout"/>
     <addaction name="separator"/>
-    <addaction name="actionAcerca_de"/>
+    <addaction name="actionExit"/>
    </widget>
    <addaction name="menuMen"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionDesloguearse">
+  <action name="actionAbout">
    <property name="text">
     <string>Acerca de...</string>
    </property>
   </action>
-  <action name="actionAcerca_de">
+  <action name="actionExit">
    <property name="text">
     <string>Salir</string>
    </property>
