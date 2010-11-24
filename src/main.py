@@ -27,7 +27,11 @@ class Principal (QtGui.QMainWindow):
         # Actualizar las reservas vencidas para que tengan el estado
         # correspondiente.
         reservas = Reservas(self.conn)
-        reservas.actualizarReservasVencidas()
+        reservasVencidas = reservas.cantidadReservasVencidas()
+        if (int(reservasVencidas) > 0):
+            stringo = "Se marcaron %s reservas como vencidas \ndebido a que superaron su fecha de vencimiento." % (reservasVencidas)
+            qmb = QtGui.QMessageBox().information(self, "Aviso", stringo, QtGui.QMessageBox.Ok)
+            reservas.actualizarReservasVencidas()
 
         # Creacion de la ventana principal
         self.ventana = Ui_MainWindow()

@@ -50,7 +50,7 @@ class Reservas(AbstractModel):
         self.model.setHeaderData(8, QtCore.Qt.Horizontal, "Pasaporte")
         self.model.setHeaderData(9, QtCore.Qt.Horizontal, "Vuelo")
         self.model.setHeaderData(10, QtCore.Qt.Horizontal, "Dia y Hora de Salida")
-        
+
     def deleteAll(self, vuelo, diahora_sale):
         """
         Este metodo elimina todas las reservas asociadas a una instancia de vuelo, 
@@ -61,3 +61,9 @@ class Reservas(AbstractModel):
 
     def actualizarReservasVencidas(self):
         self.conn.update("update reservas set reservas.estado='Vencida' where (reservas.estado = 'Pendiente') and (vencimiento <= now())") 
+
+    def cantidadReservasVencidas(self):
+        model = self.conn.query("select count(*) from reservas where (vencimiento <= now()) and (estado = 'Pendiente')")
+        #print model.record(0).value(0).toString()
+        return model.record(0).value(0).toString()
+
